@@ -3,9 +3,8 @@ class CreateWeeks < ActiveRecord::Migration[5.0]
     create_table :weeks do |t|
       t.date :start_date
       t.date :end_date
-      t.intger :week_number
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
