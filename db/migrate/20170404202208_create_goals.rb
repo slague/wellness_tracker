@@ -5,6 +5,8 @@ class CreateGoals < ActiveRecord::Migration[5.0]
       t.integer :progress_count
       t.integer :total_goal_count
       t.references :category, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
+      t.references :week, index: true, foreign_key: true
 
       t.timestamps null: false
     end

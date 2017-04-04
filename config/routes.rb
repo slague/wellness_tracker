@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   get  '/auth/:provider/callback', to: 'sessions#create'
   post '/logout',                  to: 'sessions#destroy'
   get  '/sign_in_with_census',     to: 'sessions#new'
-  
-  namespace :admin do
-    resources :census_users, only: [:index]
-    resources :weeks
-    resources :categories
-  end 
-  
-  # resources :users
-  resources :goals
-  
+
+  # namespace :admin do
+  #   resources :census_users, only: [:index]
+  #   resources :weeks
+  #   resources :categories
+  # end
+
+  resources :users, only: [] do
+    resources :goals
+  end
+
 end
