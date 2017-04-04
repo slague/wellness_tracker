@@ -33,9 +33,20 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'omniauth'
+gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
+#gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census", group: :production
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy' # helps
+  gem 'database_cleaner' # clean db before & after
+  gem "rspec-pride" # colors!
+  gem "pry-rails" 
+  gem "factory_girl_rails"
+  gem 'shoulda-matchers' # validations
 end
 
 group :development do
