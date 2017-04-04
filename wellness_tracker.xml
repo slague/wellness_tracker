@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="122" y="258" name="users">
+</datatypes><table x="468" y="140" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -49,7 +49,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="662" y="170" name="goals">
+<table x="685" y="167" name="goals">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -66,6 +66,10 @@
 <row name="total_goal_count" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <row name="week_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="weeks" row="id" />
@@ -85,7 +89,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="499" y="248" name="weeks">
+<table x="449" y="278" name="weeks">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -103,23 +107,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="314" y="317" name="user_weeks">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="week_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="weeks" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="346" y="523" name="admins">
+<table x="387" y="495" name="admins">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -138,7 +126,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="48" y="439" name="census_user_infos">
+<table x="165" y="124" name="census_user_infos">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
