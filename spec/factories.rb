@@ -26,7 +26,7 @@ factory :goal do
     "#{n} goal description"
   end
   category
-  progress_count 0
+  # progress_count 0
   total_goal_count 5
   user
   week
