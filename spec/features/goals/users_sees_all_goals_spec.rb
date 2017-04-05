@@ -9,9 +9,9 @@ describe "User sees all goals" do
 
     expect(page).to have_content goal_one.progress_count
     expect(page).to have_content goal_one.total_goal_count
-    expect(page).to have_content goal_one.category_id
+    expect(page).to have_content goal_one.category.name
     expect(page).to have_content goal_two.description
-    expect(page).to have_content goal_three.category_id
+    expect(page).to have_content goal_three.category.name
 
   end
 end

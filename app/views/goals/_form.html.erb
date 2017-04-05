@@ -17,28 +17,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :progress_count %>
-    <%= f.number_field :progress_count %>
-  </div>
-
-  <div class="field">
     <%= f.label :total_goal_count %>
     <%= f.number_field :total_goal_count %>
   </div>
 
   <div class="field">
     <%= f.label :category_id %>
-    <%= f.text_field :category_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :week_id %>
-    <%= f.text_field :week_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, :required => true, :include_blank => "Select a Category" %>
   </div>
 
   <div class="actions">
