@@ -4,7 +4,8 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @user = User.find(params[:user_id])
+    @goals = @user.goals
   end
 
   # GET /goals/1
@@ -14,6 +15,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/new
   def new
+    @user = User.find(params[:user_id])
     @goal = Goal.new
   end
 
@@ -24,6 +26,7 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
+    @user = User.find(params[:user_id])
     @goal = Goal.new(goal_params)
 
     respond_to do |format|
@@ -56,7 +59,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
+      format.html { redirect_to user_goals_path, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
