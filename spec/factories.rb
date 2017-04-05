@@ -5,6 +5,9 @@ factory :user do
   factory :user_with_goals do
     goals { create_list(:goal, 3) }
   end
+    factory :user_with_goal do
+    goals { create_list(:goal, 1) }
+  end
 end
 
 factory :category do

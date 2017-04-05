@@ -58,10 +58,8 @@ class GoalsController < ApplicationController
   # DELETE /goals/1.json
   def destroy
     @goal.destroy
-    respond_to do |format|
-      format.html { redirect_to user_goals_path, notice: 'Goal was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Goal Successfully Deleted!"
+      redirect_to user_goals_path
   end
 
   private
