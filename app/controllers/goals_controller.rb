@@ -11,6 +11,8 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
+    # @user = User.find(params[:user_id])
+    # @goal = @user.goals.find(params[:id])
   end
 
   # GET /goals/new
@@ -21,6 +23,8 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @goal = @user.goals.find(params[:id])
   end
 
   # POST /goals
@@ -29,28 +33,25 @@ class GoalsController < ApplicationController
     @user = User.find(params[:user_id])
     @goal = @user.goals.new(goal_params.merge(week: current_week))
 
-    respond_to do |format|
-      if @goal.save
-        format.html { redirect_to user_goals_path(@user), notice: 'Goal was successfully created.' }
-        format.json { render :show, status: :created, location: @goal }
-      else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
+    if @goal.save
+      flash[:success] = "Goal was successfully created."
+      redirect_to user_goals_path(@user)
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
   def update
-    respond_to do |format|
-      if @goal.update(goal_params)
-        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @goal }
-      else
-        format.html { render :edit }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
+
+    @user = User.find(params[:user_id])
+
+    if @user.goals.update(goal_params.merge(week: current_week))
+      flash[:success] = 'Goal was successfully updated.'
+      redirect_to user_goals_path(@user)
+    else
+      render :edit
     end
   end
 
