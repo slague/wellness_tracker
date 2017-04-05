@@ -84,7 +84,7 @@ RSpec.feature "User can edit a goal" do
       @goal.update(progress_count: total_goal_count)
 
       visit user_goals_path(@goal.user)
-      
+
       expect(page).to_not have_button("Increment Goal Progress!")
     end
   end
