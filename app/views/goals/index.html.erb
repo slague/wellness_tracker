@@ -22,7 +22,7 @@
         <td><%= goal.category.name %></td>
         <td><%= link_to 'Show', user_goals_path %></td>
         <td><%= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
-        <td><%= link_to 'Destroy', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
