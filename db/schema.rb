@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405204045) do
+ActiveRecord::Schema.define(version: 20170406225502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20170405204045) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "census_uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "role"
+    t.string   "census_access_token"
   end
 
   create_table "week_numbers", force: :cascade do |t|

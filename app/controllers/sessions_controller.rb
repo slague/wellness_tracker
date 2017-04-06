@@ -9,11 +9,19 @@ class SessionsController < ApplicationController
       end
   end
 
-
+  def show
+  end
 
 
   def new
 
+  end
+
+  def destroy
+    reset_session
+    flash[:success] = "Successfully logged out."
+
+    redirect_to root_path
   end
 
 
