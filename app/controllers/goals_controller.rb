@@ -39,7 +39,7 @@ class GoalsController < ApplicationController
     @user = User.find(params[:user_id])
     @goal = @user.goals.find(params[:id])
     new_total = goal_params[:total_goal_count]
-
+    
     if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
       flash[:success] = 'Goal was successfully updated.'
       redirect_to user_goals_path(@user)
@@ -81,6 +81,7 @@ class GoalsController < ApplicationController
     end
 
     def goal_params
+
       params.require(:goal).permit(:description,
                                    :total_goal_count,
                                    :category_id).merge(week: current_week)

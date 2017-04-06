@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   def current_week
     today = Date.today
-    Week.where('start_date < ? AND end_date > ?', today, today)
+    Week.find_by('start_date <= ? AND end_date >= ?', today, today)
   end
 end
