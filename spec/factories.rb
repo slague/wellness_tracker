@@ -18,6 +18,8 @@ end
 
 factory :week do
   week_number
+  start_date Date.today
+  end_date (Date.today + 7)
 end
 
 factory :week_number do

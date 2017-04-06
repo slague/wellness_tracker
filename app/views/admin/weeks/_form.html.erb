@@ -1,0 +1,17 @@
+<%= form_tag admin_weeks_path do %>
+  <% @weeks.each_with_index do |week, index| %>
+  <div class="week_<%= index %>">
+    <%= fields_for 'weeks[]', week do |w| %>
+      <%= w.label :week_number %>
+      <%= w.select :week_number_id, options_for_select(1..6) %><br><br>
+
+      <%= w.label :start_date %>
+      <%= w.date_field :start_date %><br><br>
+
+      <%= w.label :end_date %>
+      <%= w.date_field :end_date %><br><br>
+    </div>
+    <% end %>
+  <% end %>
+    <%= submit_tag "Create Weeks" %>
+<% end %>
