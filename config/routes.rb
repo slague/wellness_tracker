@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   #   resources :categories
    end
 
+  put '/users/:user_id/goals/:id/inc', to: 'goals#increment', as: 'inc_user_goal'
+
   resources :users, only: [] do
     resources :goals
   end
