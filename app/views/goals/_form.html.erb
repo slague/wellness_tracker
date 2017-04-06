@@ -1,10 +1,10 @@
 <%= form_for([@user, @goal]) do |f| %>
-  <% if goal.errors.any? %>
+  <% if @goal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this @goal from being saved:</h2>
 
       <ul>
-      <% goal.errors.full_messages.each do |message| %>
+      <% @goal.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -17,29 +17,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :progress_count %>
-    <%= f.number_field :progress_count %>
-  </div>
-
-  <div class="field">
     <%= f.label :total_goal_count %>
     <%= f.number_field :total_goal_count %>
   </div>
 
-  <div class="field">
-    <%= f.label :category_id %>
-    <%= f.text_field :category_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :week_id %>
-    <%= f.text_field :week_id %>
-  </div>
+  <% if @goal.new_record? %>
+    <div class="field">
+      <%= f.label :category_id %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, :required => true, :include_blank => "Select a Category" %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

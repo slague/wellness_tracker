@@ -5,6 +5,9 @@ factory :user do
   factory :user_with_goals do
     goals { create_list(:goal, 3) }
   end
+    factory :user_with_goal do
+    goals { create_list(:goal, 1) }
+  end
 end
 
 factory :category do
@@ -15,6 +18,8 @@ end
 
 factory :week do
   week_number
+  start_date Date.today
+  end_date (Date.today + 7)
 end
 
 factory :week_number do
