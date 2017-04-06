@@ -45,7 +45,7 @@ RSpec.feature "User can edit a goal" do
 
       click_on "Update Goal"
 
-      expect(page).to have_content("#{@goal.category.name} category's goal sum cannot exceed seven!")
+      expect(page).to have_content("You cannot have more than seven #{@goal.category.name} goals!")
       expect(Goal.find(@goal.id).total_goal_count).to eq(original_goal_count)
     end
     scenario "user cannot update total goal count to be more than seven for a category" do
@@ -66,7 +66,7 @@ RSpec.feature "User can edit a goal" do
 
       click_on "Update Goal"
 
-      expect(page).to have_content("#{goal1.category.name} category's goal sum cannot exceed seven!")
+      expect(page).to have_content("You cannot have more than seven #{goal1.category.name} goals!")
       expect(Goal.find(goal1.id).total_goal_count).to eq(original_goal_count)
     end
     scenario "user can update progress count with button" do

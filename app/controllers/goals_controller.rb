@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
       flash[:success] = "Goal was successfully created."
       redirect_to user_goals_path(@user)
     elsif
-      flash[:danger] = "#{@goal.category.name} category's goal sum cannot exceed seven!"
+      flash[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
       render :new
     else
       render :new
@@ -40,13 +40,11 @@ class GoalsController < ApplicationController
     @goal = @user.goals.find(params[:id])
     new_total = goal_params[:total_goal_count]
 
-    new_progress += 1 if params[:goal].nil?
-
     if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
       flash[:success] = 'Goal was successfully updated.'
       redirect_to user_goals_path(@user)
     elsif
-      flash[:danger] = "#{@goal.category.name} category's goal sum cannot exceed seven!"
+      flash[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
       render :edit
     else
       render :edit
