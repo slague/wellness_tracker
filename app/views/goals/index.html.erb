@@ -2,7 +2,7 @@
 
 <h1>Goals</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Description</th>
@@ -14,21 +14,57 @@
   </thead>
 
   <tbody>
-    <% @goals.each do |goal| %>
+    <%# @goals.each do |goal| %>
       <tr>
-        <td><%= goal.description %></td>
-        <td><%= goal.progress_count %></td>
-        <td><%= goal.total_goal_count %></td>
-        <td><%= goal.category.name %></td>
-        <% unless (goal.total_goal_count == goal.progress_count) %>
-          <td><%= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %></td>
-        <% end %>
-        <td><%= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
-        <td><%= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= goal.description %></td>
+        <td><%#= goal.progress_count %></td>
+        <td><%#= goal.total_goal_count %></td>
+        <td><%#= goal.category.name %></td>
+        <%# unless (goal.total_goal_count == goal.progress_count) %>
+          <td><%#= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %></td>
+        <%# end %>
+        <td><%#= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
+        <td><%#= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
-</table>
+</table> -->
+
+<section class="user-goals">
+  <article class="week-date-display">
+    <h2><%= current_week.week_number.name %></h2>
+    <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
+  </article>
+
+  <% @goals.each do |goal| %>
+    <article class="goal-first-row">
+    <div class="goal_<%= goal.category.name %>">  <!-- these will be goal_sweat, goal_nutrition, goal_nutrition & goal_personal-->
+      <%#= ## CATEGORY ICON %>
+      <h3><%= goal.description %></h3>
+      Category: <%= goal.category.name %>
+      <div class="see-more"></div>
+      <%= link_to 'Edit', edit_user_goal_path(@user, goal) %>
+      <%= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+
+    <div class="goal-second-row">
+      <div class="add-tally"></div>
+      <div class="subtract-tally"></div>
+      <div class="progress-bar">
+        <div class="completed-bar"></div>
+      </div>
+      <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
+    <% unless (goal.total_goal_count == goal.progress_count) %>
+      <%= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %>
+    <% end %>
+    </div>
+
+    <div class="divider"></div>
+  </article>
+  <% end %>
+
+</section>
 
 <br>
 
