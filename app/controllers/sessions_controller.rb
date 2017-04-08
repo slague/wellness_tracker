@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
 
   def new
-
+    redirect_to '/auth/census'
   end
 
   def destroy
