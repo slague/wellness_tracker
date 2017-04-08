@@ -34,8 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'omniauth'
-gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
-#gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census", group: :production
+# gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
+gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
 
 group :development, :test do

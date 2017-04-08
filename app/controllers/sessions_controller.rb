@@ -29,7 +29,9 @@ class SessionsController < ApplicationController
 
   def omniauth_options
     # If we want to gather more info, throw a byebug when we get census stuff working (in byrbug look at request.env["omniauth.auth"])
+    # byebug
     if auth_hash = request.env["omniauth.auth"]
+
       {
         uid: auth_hash["uid"].to_i
       }
