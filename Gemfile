@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth'
 gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
 #gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census", group: :production
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'byebug'
@@ -44,9 +45,10 @@ group :development, :test do
   gem 'launchy' # helps
   gem 'database_cleaner' # clean db before & after
   gem "rspec-pride" # colors!
-  gem "pry-rails" 
+  gem "pry-rails"
   gem "factory_girl_rails"
   gem 'shoulda-matchers' # validations
+  gem 'dotenv-rails'
 end
 
 group :development do
