@@ -2,11 +2,10 @@ class SessionsController < ApplicationController
 
   def create
     @user= User.find_or_create_by(census_uid: omniauth_options[:uid])
-      if @user.persisted?
-        session[:id] = @user.id
-        redirect_to user_goals_path(@user), notice: "Welcome Back"
-
-      end
+    if @user.persisted?
+      session[:user_id] = @user.id
+      redirect_to user_goals_path(@user), notice: "Welcome Back"
+    end
   end
 
   def show
@@ -14,7 +13,7 @@ class SessionsController < ApplicationController
 
 
   def new
-    redirect_to '/auth/census'
+    redirect_to '/auth/github'
   end
 
   def destroy
@@ -31,7 +30,6 @@ class SessionsController < ApplicationController
     # If we want to gather more info, throw a byebug when we get census stuff working (in byrbug look at request.env["omniauth.auth"])
     # byebug
     if auth_hash = request.env["omniauth.auth"]
-
       {
         uid: auth_hash["uid"].to_i
       }

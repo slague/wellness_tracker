@@ -1,71 +1,73 @@
-h1, h2, h3,h4, h5, h6, p, a {
+@import "bootstrap";
+
+/*h1, h2, h3,h4, h5, h6, p, a {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 /*"WELLNESS TRACKER"*/
-h1 {
+/*h1 {
   color: #ffffff;
   font-size: 30px;
   font-weight: 700;
   text-tranform: uppercase;
-}
+}*/
 
 /*"WEEK #"*/
-h2 {
+/*h2 {
   font-size: 50px;
   font-weight: 700;
   text-transform: uppercase;
-}
+}*/
 
 /*Goal description*/
-h3 {
+/*h3 {
   font-size: 24px;
-}
+}*/
 
 /*Day of the week display and Goal frequency display*/
-h4 {
+/*h4 {
   font-size: 16px;
-}
+}*/
 
 
 /*USER LANDING PAGE; WEEKLY GOAL LIST*/
-header {
+/*header {
   background-color: #05C2D1;
-}
+}*/
 
-.turing-logo {
+/*.turing-logo {
   width: 60px;
   height: 60px;
   background: url('../assets/images/logo-small.png') no-repeat;
   background-size: cover;
-}
+}*/
 
 /*USER GOALS SECTION*/
-.user-goals {
+/*.user-goals {
   width: 95%;
-}
+}*/
 
 /*WEEK/DATE DISPLAY*/
-.week-date-display {
+/*.week-date-display {
   display: flex;
   justify-content: space-between;
-}
+}*/
 
 /*GOALS*/
 /*FIRST ROW*/
-.goal-first-row {
+/*.goal-first-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+}*/
 
-.category {
+/*.category {
   width: 60px;
   height: 60px;
   background: url(../assets/images/category-sprites.png) no-repeat 0 0;
   background-size: cover;
-}
+}*/
 
-.see-more {
+/*.see-more {
   width: 35px;
-}
+}*/

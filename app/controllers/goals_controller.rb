@@ -1,26 +1,20 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:create, :update, :increment]
 
   def index
-    @user = User.find(params[:user_id])
-    @goals = @user.goals
-  end
-
-  def show
+    @goals = current_user.goals.where(week_id: current_week.id)
   end
 
   def new
-    @user = User.find(params[:user_id])
     @goal = Goal.new
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @goal = @user.goals.find(params[:id])
+    @goal = current_user.goals.find(params[:id])
   end
 
   def create
-    @user = User.find(params[:user_id])
     @goal = @user.goals.new(goal_params)
     new_total = goal_params[:total_goal_count]
 
@@ -36,10 +30,9 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
     @goal = @user.goals.find(params[:id])
     new_total = goal_params[:total_goal_count]
-    
+
     if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
       flash[:success] = 'Goal was successfully updated.'
       redirect_to user_goals_path(@user)
@@ -52,7 +45,6 @@ class GoalsController < ApplicationController
   end
 
   def increment
-    @user = User.find(params[:user_id])
     @goal = @user.goals.find(params[:id])
     new_count = @goal.progress_count + 1
 
@@ -76,12 +68,15 @@ class GoalsController < ApplicationController
   end
 
   private
+    def set_user
+      @user = current_user
+    end
+
     def set_goal
       @goal = Goal.find(params[:id])
     end
 
     def goal_params
-
       params.require(:goal).permit(:description,
                                    :total_goal_count,
                                    :category_id).merge(week: current_week)
