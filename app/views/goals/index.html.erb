@@ -21,10 +21,10 @@
         <td><%#= goal.total_goal_count %></td>
         <td><%#= goal.category.name %></td>
         <%# unless (goal.total_goal_count == goal.progress_count) %>
-          <td><%#= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %></td>
+          <td><%#= button_to 'Increment Goal Progress!', inc_user_goal_path(current_user, goal), method: :put %></td>
         <%# end %>
-        <td><%#= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
-        <td><%#= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Edit', edit_user_goal_path(current_user, goal) %></td>
+        <td><%#= link_to 'Delete', user_goal_path(current_user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <%# end %>
   </tbody>
@@ -43,8 +43,8 @@
       <h3><%= goal.description %></h3>
       Category: <%= goal.category.name %>
       <div class="see-more"></div>
-      <%= link_to 'Edit', edit_user_goal_path(@user, goal) %>
-      <%= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_user_goal_path(current_user, goal) %>
+      <%= link_to 'Delete', user_goal_path(current_user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
 
@@ -56,7 +56,7 @@
       </div>
       <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
     <% unless (goal.total_goal_count == goal.progress_count) %>
-      <%= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %>
+      <%= button_to 'Increment Goal Progress!', inc_user_goal_path(current_user, goal), method: :put %>
     <% end %>
     </div>
 
@@ -68,5 +68,5 @@
 
 <br>
 
-<%= link_to 'New Goal', new_user_goal_path(@user) %>
-<%= link_to 'Log out', logout_path, method: :delete %>
+<%= link_to 'New Goal', new_user_goal_path(current_user) %>
+<%#= link_to 'Log out', logout_path, method: :delete %>
