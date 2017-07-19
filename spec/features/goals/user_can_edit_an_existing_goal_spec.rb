@@ -16,13 +16,13 @@ RSpec.feature "User can edit a goal" do
     scenario "user can update description" do
       visit edit_user_goal_path(@goal.user, @goal)
 
-      fill_in "goal[description]", with: "Be nicer to Lauren"
+      fill_in "goal[description]", with: "Do more codewars!"
 
       click_on "Update Goal"
 
       expect(current_path).to eq(user_goals_path(@goal.user))
       expect(page).to have_content('Goal was successfully updated.')
-      expect(page).to have_content("Be nicer to Lauren")
+      expect(page).to have_content("Do more codewars!")
     end
     scenario "user can update total goal count" do
       visit edit_user_goal_path(@goal.user, @goal)

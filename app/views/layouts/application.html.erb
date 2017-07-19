@@ -21,7 +21,8 @@
     <% flash.each do |type, msg| %>
       <%= content_tag :div, msg, class:"flash_#{type}"  %>
     <% end %>
-
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>

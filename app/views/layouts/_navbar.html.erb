@@ -1,14 +1,18 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
+<nav>
+  <!-- <div class="navbar-header">
     <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="/">Wellness App</a>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    </button> -->
+    <div class="app-logo">
+      <!-- <%#= image_tag "../images/logo-small.png", class: "app", size: "304x236" %> -->
+      <img src="/logo-small.png">
+    </div>
+    <a class="app-title" href="/">Wellness Tracker</a>
+  <!-- </div> -->
+  <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
     <!-- <ul class="nav navbar-nav">
       <li><%#=link_to "#{current_user.name}", user_path if current_user%></li>
     <li class="dropdown">
@@ -19,12 +23,12 @@
           </ul>
         </li>
       </ul> -->
-    <ul class="nav navbar-nav navbar-right">
+    <div align="right">
       <% if current_user %>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>
-        <li><%= link_to "Sign in with Github", sign_in_with_github_path %></li>
+        <!-- <li><%#= link_to "Sign in with Github", sign_in_with_github_path %></li> -->
       <% end %>
-    </ul>
+    </div>
   </div>
 </nav>

@@ -1,4 +1,6 @@
+
 <h1>Goals</h1>
+<hr>
 
 <!-- <table>
   <thead>
@@ -40,6 +42,7 @@
       <%#= ## CATEGORY ICON %>
       <h3><%= goal.description %></h3>
       Category: <%= goal.category.name %>
+      
       <div class="see-more"></div>
       <%= link_to 'Edit', edit_user_goal_path(current_user, goal) %>
       <%= link_to 'Delete', user_goal_path(current_user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -54,7 +57,7 @@
       </div>
       <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
     <% unless (goal.total_goal_count == goal.progress_count) %>
-      <%= button_to 'Increment Goal Progress!', inc_user_goal_path(current_user, goal), method: :put %>
+      <%= button_to 'Increment Goal Progress!',inc_user_goal_path(current_user, goal), method: :put, class: 'btn btn-success' %>
     <% end %>
     </div>
 

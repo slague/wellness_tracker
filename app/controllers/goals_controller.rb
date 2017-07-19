@@ -31,9 +31,11 @@ class GoalsController < ApplicationController
 
   def update
     @goal = @user.goals.find(params[:id])
+    @goal.update(goal_params)
     new_total = goal_params[:total_goal_count]
 
-    if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
+    # if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
+    if new_total.to_i <= 7 && @goal.save
       flash[:success] = 'Goal was successfully updated.'
       redirect_to user_goals_path(@user)
     elsif
@@ -49,7 +51,7 @@ class GoalsController < ApplicationController
     new_count = @goal.progress_count + 1
 
     if @goal.update(progress_count: new_count) && (@goal.total_goal_count == new_count)
-      flash[:success] = 'You achieved your goal for the week! Awesome job.'
+      flash[:success] = 'You achieved your goal for the week. Awesome!'
       redirect_to user_goals_path(@user)
     elsif @goal.update(progress_count: new_count)
       flash[:success] = 'Nicely done!'
