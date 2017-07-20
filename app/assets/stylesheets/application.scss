@@ -4,16 +4,6 @@ h1, h2, h3,h4, h5, h6, p, a {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.login{
-  background-color: #e1e3e8;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 15px;
-  margin-left: 250px;
-  margin-right: 250px;
-  margin-top: 75px;
-}
-
 /*"WELLNESS TRACKER"*/
 h1 {
   color: #ffffff;
@@ -45,6 +35,16 @@ nav {
   box-sizing: border-box;
   background-color: #05C2D1;
   font-size: 40px;
+}
+
+.login{
+  background-color: #e1e3e8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 75px;
 }
 
 .logout{
