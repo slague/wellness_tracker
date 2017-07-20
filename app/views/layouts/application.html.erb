@@ -12,14 +12,18 @@
   <body>
 
     <%= render partial: 'layouts/navbar' %>
-    
-    <% flash.each do |type, message| %>
-            <div class="alert alert-<%= type %>">
-            <button type="button" class="close" data-dismiss='alert'>x</button>
-          <%= sanitize(message) %>
-          <% end %>
-        </div>
 
+
+    <div class="row">
+      <div class="col-lg-12">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %>">
+        <button type="button" class="close" data-dismiss='alert'>x</button>
+      <%= sanitize(message) %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
     <!-- <% flash.each do |type, msg| %>
       <%#= content_tag :div, msg, class:"flash_#{type}"  %>
