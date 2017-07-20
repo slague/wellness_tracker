@@ -1,4 +1,4 @@
-<%= form_for([@user, @goal]) do |f| %>
+<%= form_for([current_user, @goal]) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this @goal from being saved:</h2>
@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :total_goal_count %>
-    <%= f.number_field :total_goal_count %>
+    <%= f.number_field :total_goal_count, min: 1, max: 7 %>
   </div>
 
   <% if @goal.new_record? %>

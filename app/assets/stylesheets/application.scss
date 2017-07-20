@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 h1, h2, h3,h4, h5, h6, p, a {
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -29,16 +31,53 @@ h4 {
 
 
 /*USER LANDING PAGE; WEEKLY GOAL LIST*/
-header {
+nav {
+  box-sizing: border-box;
   background-color: #05C2D1;
+  font-size: 40px;
 }
 
-.turing-logo {
+.login{
+  background-color: #e1e3e8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 75px;
+}
+
+.logout{
+  font-size: 20px;
+  color: white;
+  float: right;
+  padding-right: 15px;
+  padding-top: 55px;
+  color: white;
+}
+
+.app-title{
+  color: white;
+}
+
+.icons{
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+}
+
+.goal-title-icon{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*.turing-logo {
   width: 60px;
   height: 60px;
   background: url('../assets/images/logo-small.png') no-repeat;
   background-size: cover;
-}
+}*/
 
 /*USER GOALS SECTION*/
 .user-goals {
@@ -57,6 +96,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.goal-second-row{
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
 }
 
 .category {

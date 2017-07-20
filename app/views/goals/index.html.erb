@@ -1,34 +1,6 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Goals</h1>
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Progress count</th>
-      <th>Total goal count</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%# @goals.each do |goal| %>
-      <tr>
-        <td><%#= goal.description %></td>
-        <td><%#= goal.progress_count %></td>
-        <td><%#= goal.total_goal_count %></td>
-        <td><%#= goal.category.name %></td>
-        <%# unless (goal.total_goal_count == goal.progress_count) %>
-          <td><%#= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %></td>
-        <%# end %>
-        <td><%#= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
-        <td><%#= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <%# end %>
-  </tbody>
-</table> -->
+<hr>
 
 <section class="user-goals">
   <article class="week-date-display">
@@ -40,11 +12,13 @@
     <article class="goal-first-row">
     <div class="goal_<%= goal.category.name %>">  <!-- these will be goal_sweat, goal_nutrition, goal_nutrition & goal_personal-->
       <%#= ## CATEGORY ICON %>
-      <h3><%= goal.description %></h3>
-      Category: <%= goal.category.name %>
+      <div class='goal-title-icon'>
+        <img class='icons' src= "<%= goal.category.image_path%>"> &nbsp;
+        <h3><%= goal.description %></h3>
+      </div>
       <div class="see-more"></div>
-      <%= link_to 'Edit', edit_user_goal_path(@user, goal) %>
-      <%= link_to 'Delete', user_goal_path(@user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_user_goal_path(current_user, goal) %>
+      <%= link_to 'Delete', user_goal_path(current_user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
 
@@ -54,19 +28,20 @@
       <div class="progress-bar">
         <div class="completed-bar"></div>
       </div>
-      <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
     <% unless (goal.total_goal_count == goal.progress_count) %>
-      <%= button_to 'Increment Goal Progress!', inc_user_goal_path(@user, goal), method: :put %>
+    <%= link_to image_tag("plus_sign.png", size: '28x28'), inc_user_goal_path(current_user, goal), method: :put%>
+    *******COOL PROGRESS BAR GOES HERE***********
+      <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
     <% end %>
     </div>
 
     <div class="divider"></div>
   </article>
+  <hr>
   <% end %>
 
 </section>
 
 <br>
 
-<%= link_to 'New Goal', new_user_goal_path(@user) %>
-<%= link_to 'Log out', logout_path, method: :delete %>
+<%= link_to 'New Goal', new_user_goal_path(current_user), class: 'btn btn-danger' %>
