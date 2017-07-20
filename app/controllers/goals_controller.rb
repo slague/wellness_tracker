@@ -18,7 +18,7 @@ class GoalsController < ApplicationController
     @goal = @user.goals.new(goal_params)
     new_total = goal_params[:total_goal_count]
 
-    if @goal.reasonable_total?(new_total) && @goal.save
+    if @goal.reasonable_total?(new_total) && @goal.save  
       flash[:success] = "Goal was successfully created."
       redirect_to user_goals_path(@user)
     elsif

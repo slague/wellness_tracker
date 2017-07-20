@@ -1,34 +1,9 @@
 <nav>
-  <!-- <div class="navbar-header">
-    <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button> -->
-    <div class="app-logo">
-      <!-- <%#= image_tag "../images/logo-small.png", class: "app", size: "304x236" %> -->
-      <img src="/logo-small.png">
-    </div>
-    <a class="app-title" href="/">Wellness Tracker</a>
-  <!-- </div> -->
-  <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-    <!-- <ul class="nav navbar-nav">
-      <li><%#=link_to "#{current_user.name}", user_path if current_user%></li>
-    <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recent Activity <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%#= link_to "Your Recent Commits", user_commits_path %></li>
-            <li><%#= link_to "Your Following's Recent Commits", following_commits_path %></li>
-          </ul>
-        </li>
-      </ul> -->
-    <div align="right">
+  <%=image_tag("turing_logo_wellness.png", size: '90x90')%>
+  <a class="app-title" href="/">Wellness Tracker</a>
+    <div class="logout">
       <% if current_user %>
         <%= link_to "Logout", logout_path, method: :delete %>
-      <% else %>
-        <!-- <li><%#= link_to "Sign in with Github", sign_in_with_github_path %></li> -->
       <% end %>
     </div>
-  </div>
 </nav>
