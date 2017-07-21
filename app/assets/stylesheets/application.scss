@@ -37,12 +37,6 @@ nav {
   font-size: 40px;
 }
 
-.full-page{
-  // display: grid;
-  // grid-template-columns: 20% 20% 20% 20% 20%;
-  // grid-template-rows: 20% 20% 20% 20% 20%;
-}
-
 .login{
   background-color: #e1e3e8;
   padding-top: 20px;
@@ -62,6 +56,10 @@ nav {
   color: white;
 }
 
+.logout a{
+  color: white;
+}
+
 .app-title{
   color: white;
 }
@@ -70,48 +68,44 @@ nav {
   width: 30px;
   min-width: 30px;
   height: 30px;
+  margin-top: 15px;
 }
 
 .goal-title-icon{
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  // align-items: center;
+  width: 300px;
+  max-width: 300px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  vertical-align: text-bottom;
 }
 
 .top-row-links{
-  // display: grid;
-  // grid-template-columns: 20% 20% 20% 20% 20%;
-  // grid-template-rows: 20% 20% 20% 20% 20%;
   color: #05C2D1;
   font-size: 14px;
-  // position: relative;
-  // box-sizing: border-box;
 }
 
-.links-left{
-  grid-column-start: 1;
-  // position: relative;
-  // box-sizing: border-box;
-}
-.links-right{
-  grid-column-start: 4;
-  // position: relative;
-  // box-sizing: border-box;
-}
 
 .field{
   padding: 10px;
 }
 
+span{
+  padding-left: 390px;
+  align-content: right;
+}
+
+.admin-link{
+  padding-top: 20px;
+}
+
 .form{
   padding-right: 100px;
 }
-/*.turing-logo {
-  width: 60px;
-  height: 60px;
-  background: url('../assets/images/logo-small.png') no-repeat;
-  background-size: cover;
-}*/
 
 /*USER GOALS SECTION*/
 .user-goals {
@@ -152,12 +146,6 @@ li{
 .user-info{
   float: left;
 }
-// .category {
-//   width: 60px;
-//   height: 60px;
-//   background: url(../assets/images/category-sprites.png) no-repeat 0 0;
-//   background-size: cover;
-// }
 
 .total-progress-bar{
   padding: 20px;

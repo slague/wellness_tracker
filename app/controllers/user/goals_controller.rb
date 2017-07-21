@@ -1,5 +1,5 @@
 class User::GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :destroy]
   before_action :set_user, only: [:create, :update, :increment]
 
   def index
@@ -32,8 +32,8 @@ class User::GoalsController < ApplicationController
   end
 
   def update
-    require "pry"; binding.pry
-    @goal = current_user.goals.find(params[:id])
+    # require "pry"; binding.pry
+    @goal = current_user.goals.find(params[:format])
     @goal.update(goal_params)
     new_total = goal_params[:total_goal_count]
 
@@ -50,7 +50,6 @@ class User::GoalsController < ApplicationController
   end
 
   def increment
-    require "pry"; binding.pry
     @goal = @user.goals.find(params[:id])
     new_count = @goal.progress_count + 1
 
@@ -79,7 +78,7 @@ class User::GoalsController < ApplicationController
     end
 
     def set_goal
-      require "pry"; binding.pry
+      # require "pry"; binding.pry
       @goal = current_user.goals.find(params[:id])
     end
 
