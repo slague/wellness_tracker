@@ -1,7 +1,9 @@
 FactoryGirl.define do
 
 factory :user do
-  census_uid 1
+  github_id 1
+  name "Turing Student"
+  cohort "1701"
   factory :user_with_goals do
     goals { create_list(:goal, 3) }
   end
