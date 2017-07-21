@@ -1,19 +1,20 @@
-  <div class="top-row-links">
-    <hr>
-    <ul class="links-left">
-      <%= link_to "Past goals" %> &nbsp;
-      <%= link_to "Turing Totals", goals_path %> &nbsp;
-    </ul>
 
-    <ul class="links-right">
+  <div class="admin-link">
+  <% if current_user.admin? %>
+  <%= link_to "Admin Dashboard", admin_dashboard_index_path  %>
+  <% end %>
+  </div>
+
+    <hr>
+    <div>
+      <%= link_to "Past goals" %> &nbsp;
+      <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
+    <span>
       <%= image_tag('schedule-reminder.svg', size: '18x18') %>
       <%= link_to "Sign up for text reminders" %>&nbsp;&nbsp;
-      <% if current_user.admin? %>
-      <%= link_to "Admin Dashboard", admin_dashboard_index_path  %>
-      <% end %>
-    </ul>
-    <hr>
+    </span>
   </div>
+    <hr>
 
   <section class="user-goals">
     <article class="week-date-display">
