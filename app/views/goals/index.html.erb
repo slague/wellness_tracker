@@ -1,47 +1,22 @@
 
-<h1>Goals</h1>
+<div class='back'>
+  <%= link_to '<<Back', user_goals_path(current_user) %>
+</div>
+
+This Week's Turing Community Totals:
 <hr>
+<div class="total-progress-bar">
+  <img class='icons' src= "<%= @sweat.image_path%>"> XXXXXX <%= @sweat_progress %> / <%= @sweat_total %>
+</div>
 
-<section class="user-goals">
-  <article class="week-date-display">
-    <h2><%= current_week.week_number.name %></h2>
-    <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
-  </article>
+<div class="total-progress-bar">
+  <img class='icons' src= "<%= @nutrition.image_path%>"> XXXXXX <%= @nutrition_progress %> / <%= @nutrition_total%>
+</div>
 
-  <% @goals.each do |goal| %>
-    <article class="goal-first-row">
-    <div class="goal_<%= goal.category.name %>">  <!-- these will be goal_sweat, goal_nutrition, goal_nutrition & goal_personal-->
-      <%#= ## CATEGORY ICON %>
-      <div class='goal-title-icon'>
-        <img class='icons' src= "<%= goal.category.image_path%>"> &nbsp;
-        <h3><%= goal.description %></h3>
-      </div>
-      <div class="see-more"></div>
-      <%= link_to 'Edit', edit_user_goal_path(current_user, goal) %>
-      <%= link_to 'Delete', user_goal_path(current_user, goal), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+<div class="total-progress-bar">
+  <img class='icons' src= "<%= @sleep.image_path%>"> XXXXXX <%= @sleep_progress %> /  <%= @sleep_total %> <br>
+</div>
 
-
-    <div class="goal-second-row">
-      <div class="add-tally"></div>
-      <div class="subtract-tally"></div>
-      <div class="progress-bar">
-        <div class="completed-bar"></div>
-      </div>
-    <% unless (goal.total_goal_count == goal.progress_count) %>
-    <%= link_to image_tag("plus_sign.png", size: '28x28'), inc_user_goal_path(current_user, goal), method: :put%>
-    *******COOL PROGRESS BAR GOES HERE***********
-      <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
-    <% end %>
-    </div>
-
-    <div class="divider"></div>
-  </article>
-  <hr>
-  <% end %>
-
-</section>
-
-<br>
-
-<%= link_to 'New Goal', new_user_goal_path(current_user), class: 'btn btn-danger' %>
+<div class="total-progress-bar">
+  <img class='icons' src= "<%= @personal.image_path%>"> XXXXXX <%= @personal_progress %> / <%= @personal_total %>
+</div>

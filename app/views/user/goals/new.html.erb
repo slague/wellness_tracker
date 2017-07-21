@@ -1,0 +1,30 @@
+
+<div class="back">
+  <%= link_to '<<Back', user_goals_path %>
+</div>
+
+
+<div class="goal-instructions">
+
+  <h4>Goal Setting instuctions:</h4>
+
+  <ul>
+    <p> <%=image_tag("checkmark.png", size: '30x30')%>
+      Your goals are your own. Each week you choose to set goals, your total progress will be included in the Turing Community's weekly totals. You may set as many (or as few) goals as you like. Only you will know what your actual goals are. </p>
+
+    <p><%=image_tag("checkmark.png", size: '30x30')%>Each goal should be different. You must choose a category for each goal. You can have more than one goal for each category.</p>
+
+    <li>You set the number of times you will meet your goal within the week (with a max of 7, once for each day). The number of goals and count only matter for you. </li>
+
+    <li>No matter how many goals you set  if you achieve 100% of your goals, you are eligible for a weekly prize. If you meet 100% of your goals every week throughout the entire mod you are eligible for a grand prize!</li>
+
+    <li>You may mark progress towards your goals through Sunday at midnight of each week. New goals can be set every Monday morning.</li>
+
+    <li>Weekly and mod winners are randomly chosen from all students who have achieved 100% of their goals. </li>
+
+  </ul>
+
+</div>
+
+
+<%= render 'form', goal: @goal %>

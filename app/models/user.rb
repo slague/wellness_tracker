@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :goals
+  has_many :goals, dependent: :destroy
   has_many :weeks, through: :goals
 
-  # enum role: %w(standard admin)
+  enum role: %w(default admin)
 
 end

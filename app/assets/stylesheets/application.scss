@@ -6,7 +6,7 @@ h1, h2, h3,h4, h5, h6, p, a {
 
 /*"WELLNESS TRACKER"*/
 h1 {
-  color: #ffffff;
+  color: #5b5f66;
   font-size: 30px;
   font-weight: 700;
   text-tranform: uppercase;
@@ -35,6 +35,12 @@ nav {
   box-sizing: border-box;
   background-color: #05C2D1;
   font-size: 40px;
+}
+
+.full-page{
+  // display: grid;
+  // grid-template-columns: 20% 20% 20% 20% 20%;
+  // grid-template-rows: 20% 20% 20% 20% 20%;
 }
 
 .login{
@@ -72,6 +78,34 @@ nav {
   align-items: center;
 }
 
+.top-row-links{
+  // display: grid;
+  // grid-template-columns: 20% 20% 20% 20% 20%;
+  // grid-template-rows: 20% 20% 20% 20% 20%;
+  color: #05C2D1;
+  font-size: 14px;
+  // position: relative;
+  // box-sizing: border-box;
+}
+
+.links-left{
+  grid-column-start: 1;
+  // position: relative;
+  // box-sizing: border-box;
+}
+.links-right{
+  grid-column-start: 4;
+  // position: relative;
+  // box-sizing: border-box;
+}
+
+.field{
+  padding: 10px;
+}
+
+.form{
+  padding-right: 100px;
+}
 /*.turing-logo {
   width: 60px;
   height: 60px;
@@ -100,15 +134,43 @@ nav {
 
 .goal-second-row{
   display: flex;
-  // justify-content: space-between;
+  justify-content: right;
   // align-items: center;
 }
 
-.category {
-  width: 60px;
-  height: 60px;
-  background: url(../assets/images/category-sprites.png) no-repeat 0 0;
-  background-size: cover;
+ul{
+  // list-style-image: image-url("checkmark.png");
+  // list-style-image: url(asset-path('chcekmark.png'));
+  // list-style: square inside url(asset-path("checkmark.png"));
+  // width: 20px;
+}
+
+li{
+  padding-bottom: 10px;
+}
+
+.user-info{
+  float: left;
+}
+// .category {
+//   width: 60px;
+//   height: 60px;
+//   background: url(../assets/images/category-sprites.png) no-repeat 0 0;
+//   background-size: cover;
+// }
+
+.total-progress-bar{
+  padding: 20px;
+}
+
+.actions{
+  padding-left: 60px;
+  padding-top: 15px;
+}
+
+.back{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .see-more {
