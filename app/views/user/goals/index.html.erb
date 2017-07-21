@@ -1,0 +1,64 @@
+  <div class="top-row-links">
+    <hr>
+    <ul class="links-left">
+      <%= link_to "Past goals" %> &nbsp;
+      <%= link_to "Turing Totals", goals_path %> &nbsp;
+    </ul>
+
+    <ul class="links-right">
+      <%= image_tag('schedule-reminder.svg', size: '18x18') %>
+      <%= link_to "Sign up for text reminders" %>&nbsp;&nbsp;
+      <% if current_user.admin? %>
+      <%= link_to "Admin Dashboard", admin_dashboard_index_path  %>
+      <% end %>
+    </ul>
+    <hr>
+  </div>
+
+  <section class="user-goals">
+    <article class="week-date-display">
+      <h2><%= current_week.week_number.name %></h2>
+      <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
+    </article>
+
+    <% @goals.each do |goal| %>
+      <article class="goal-first-row">
+      <div class="goal_<%= goal.category.name %>">
+        <%#= ## CATEGORY ICON %>
+        <div class='goal-title-icon'>
+          <img class='icons' src= "<%= goal.category.image_path%>"> &nbsp;
+          <h3><%= goal.description %></h3>
+        </div>
+        <div class="see-more"></div>
+        <%= link_to 'Edit', edit_user_goal_path(goal) %>
+        <%= link_to 'Delete', user_goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+
+
+      <div class="goal-second-row">
+        <div class="add-tally"></div>
+        <div class="subtract-tally"></div>
+        <div class="progress-bar">
+          <div class="completed-bar"></div>
+        </div>
+        <% if  (goal.total_goal_count == goal.progress_count)%>
+        <div class="icons">
+          <%= image_tag("mod-winners.svg") %>
+        </div>
+      <% else  %>
+      <%= link_to image_tag("plus_sign.png", size: '28x28'), user_inc_user_goal_path(goal), method: :put%>
+      <% end %>
+      *******COOL PROGRESS BAR GOES HERE***********
+        <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
+      </div>
+
+      <div class="divider"></div>
+    </article>
+    <hr>
+    <% end %>
+
+  </section>
+
+  <br>
+
+  <%= link_to 'New Goal', new_user_goal_path, class: 'btn btn-danger' %>

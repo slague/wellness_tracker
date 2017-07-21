@@ -1,87 +1,20 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:create, :update, :increment]
 
   def index
-    @goals = current_user.goals.where(week_id: current_week.id)
+    @sweat = Category.find(1)
+    @sleep = Category.find(2)
+    @personal = Category.find(3)
+    @nutrition = Category.find(4)
+    
+    @sweat_progress = Goal.community_progress(current_week.id, 1)
+    @sleep_progress = Goal.community_progress(current_week.id, 2)
+    @personal_progress = Goal.community_progress(current_week.id, 3)
+    @nutrition_progress = Goal.community_progress(current_week.id, 4)
+
+    @sweat_total = Goal.community_total(current_week.id, 1)
+    @sleep_total = Goal.community_total(current_week.id, 2)
+    @personal_total = Goal.community_total(current_week.id, 3)
+    @nutrition_total = Goal.community_total(current_week.id, 4)
   end
 
-  def new
-    @goal = Goal.new
-  end
-
-  def edit
-    @goal = current_user.goals.find(params[:id])
-  end
-
-  def create
-    @goal = @user.goals.new(goal_params)
-    new_total = goal_params[:total_goal_count]
-
-    # if @goal.reasonable_total?(new_total) && @goal.save
-    if @goal.save && new_total.to_i <= 7
-      flash.now[:success] = "Goal was successfully created."
-      redirect_to user_goals_path(@user)
-    elsif
-      flash.now[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
-      render :new
-    else
-      render :new
-    end
-  end
-
-  def update
-    @goal = @user.goals.find(params[:id])
-    @goal.update(goal_params)
-    new_total = goal_params[:total_goal_count]
-
-    # if @goal.reasonable_total?(new_total) && @goal.update(goal_params)
-    if new_total.to_i <= 7 && @goal.save
-      flash.now[:success] = 'Goal was successfully updated.'
-      redirect_to user_goals_path(@user)
-    elsif
-      flash.now[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
-      render :edit
-    else
-      render :edit
-    end
-  end
-
-  def increment
-    @goal = @user.goals.find(params[:id])
-    new_count = @goal.progress_count + 1
-
-    if @goal.update(progress_count: new_count) && (@goal.total_goal_count == new_count)
-      flash.now[:success] = 'You achieved your goal for the week. Awesome!'
-      redirect_to user_goals_path(@user)
-    elsif @goal.update(progress_count: new_count)
-      flash.now[:success] = 'Nicely done!'
-      redirect_to user_goals_path(@user)
-    else
-      flash.now[:danger] = 'Unable to increment goal.'
-      redirect_to user_goals_path(@user)
-    end
-
-  end
-
-  def destroy
-    @goal.destroy
-    flash.now[:success] = "Goal Successfully Deleted!"
-    redirect_to user_goals_path
-  end
-
-  private
-    def set_user
-      @user = current_user
-    end
-
-    def set_goal
-      @goal = Goal.find(params[:id])
-    end
-
-    def goal_params
-      params.require(:goal).permit(:description,
-                                   :total_goal_count,
-                                   :category_id).merge(week: current_week)
-    end
 end

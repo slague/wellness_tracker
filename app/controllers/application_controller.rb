@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     Week.find_by('start_date <= ? AND end_date >= ?', today, today)
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
 end

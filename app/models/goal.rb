@@ -23,4 +23,13 @@ class Goal < ApplicationRecord
       post_update_total <= 7
     end
   end
+
+  def self.community_progress(week_id, category_id)
+      where(week_id: week_id).where(category_id: category_id).map { |goal| goal.progress_count }.reduce(:+)
+  end
+
+  def self.community_total(week_id, category_id)
+    where(week_id: week_id).where(category_id: category_id).map { |goal| goal.total_goal_count }.reduce(:+)
+  end
+
 end

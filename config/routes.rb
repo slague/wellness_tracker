@@ -8,15 +8,16 @@ Rails.application.routes.draw do
   namespace :admin do
   #   resources :census_users, only: [:index]
      resources :weeks, only: [:index, :new, :create, :edit, :update]
-  #   resources :categories
+     resources :dashboard, only: [:index]
    end
 
-  put '/users/:user_id/goals/:id/inc', to: 'goals#increment', as: 'inc_user_goal'
-
-  resources :users, only: [] do
+  namespace :user do
     resources :goals
+    put '/goals/:id/inc', to: 'goals#increment', as: 'inc_user_goal'
   end
 
-  
+  resources :goals, only: [:index]
+  resources :users, only: [:edit, :update]
+
 
 end

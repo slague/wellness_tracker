@@ -1,0 +1,14 @@
+<div class="user-info" align="right">
+
+  <%= form_for @user do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :cohort %>
+    <%= f.text_field :cohort %><br><br>
+
+
+    <%= f.submit class: 'btn btn-warning'%>
+    <% end %>
+  </div>
