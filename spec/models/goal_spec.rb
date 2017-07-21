@@ -41,14 +41,29 @@ RSpec.describe Goal, type: :model  do
   describe "attributes" do
     it "has default 0 progress_count" do
       goal = create(:goal)
-
       expect(goal.progress_count).to eq(0)
     end
 
     it "responds to description, total_goal_count, category_id, week_id, user" do
       goal = create(:goal)
-
       expect(goal).to respond_to(:description, :user_id, :category_id, :total_goal_count, :progress_count, :week_id)
+    end
+  end
+
+  describe "methods" do
+    it ".community_progress" do
+      week = create(:week)
+      goal = create(:goal)
+      goal.update_attributes(week_id: week.id, category_id: 1, user_id: 1, progress_count: 1)
+      goal2 = create(:goal)
+      goal2.update(week_id: week.id, category_id: 1, user_id: 2, progress_count: 2)
+      goal3 = create(:goal)
+      goal3.update(week_id: week.id, category_id: 1, user_id: 3, progress_count: 1)
+
+# require "pry"; binding.pry
+      comm_prog = Goal.community_progress(1, 1)
+
+      expect(comm_prog).to eq(4)
     end
   end
 end

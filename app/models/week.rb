@@ -3,6 +3,8 @@ class Week < ApplicationRecord
   has_many :goals
   has_many :users, through: :goals
 
+  validates :start_date, :end_date, presence: true
+
   def self.set_weeks(num_of_weeks, weeks_start)
     week_nums = [*1..num_of_weeks]
     starts_ends = {}
