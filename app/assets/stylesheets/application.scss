@@ -47,18 +47,46 @@ nav {
   margin-top: 75px;
 }
 
-.logout{
-  font-size: 20px;
+details {
+  // padding-left: 15px;
   color: white;
-  float: right;
+  font-size: 14px;
   padding-right: 15px;
-  padding-top: 55px;
-  color: white;
+  padding-top: 65px;
+  float: right;
 }
 
-.logout a{
-  color: white;
+details a{
+  color: #05C2D1;
 }
+
+// summary::-webkit-details-marker {
+//   display: none
+// }
+// .admin-link{
+//   padding-top: 10px;
+//   background-color: #05C2D1;
+//   font-size: 14px;
+//   color: white;
+//   padding-left: 15px;
+// }
+
+// .admin-link a{
+//   color: white;
+// }
+//
+// .logout{
+//   font-size: 14px;
+//   // color: white;
+//   // float: right;
+//   // padding-right: 15px;
+//   // padding-top: 55px;
+//   // color: white;
+// }
+//
+// .logout a{
+//   color: white;
+// }
 
 .app-title{
   color: white;
@@ -97,10 +125,6 @@ nav {
 span{
   padding-left: 390px;
   align-content: right;
-}
-
-.admin-link{
-  padding-top: 20px;
 }
 
 .form{

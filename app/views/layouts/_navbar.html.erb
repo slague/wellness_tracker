@@ -1,9 +1,17 @@
 <nav>
   <%=image_tag("turing_logo_wellness.png", size: '90x90')%>
   <a class="app-title" href="/">Wellness Tracker</a>
-    <div class="logout">
-      <% if current_user %>
-        <%= link_to "Logout", logout_path, method: :delete %>
+
+
+  <details close>
+    <summary>Logged in as <%=current_user.name%> </summary>
+      <p><% if current_user.admin? %>
+        <%= link_to "Admin Dashboard", admin_dashboard_index_path  %>
+      <% end %></p>
+
+      <p><%= link_to "Edit profile", edit_user_path(current_user) %></p>
+      <p><% if current_user %>
+        <%= link_to "Logout", logout_path, method: :delete %></p>
       <% end %>
-    </div>
+  </details>
 </nav>

@@ -26,10 +26,11 @@ class User::GoalsController < ApplicationController
       flash[:success] = "Goal was successfully created."
       redirect_to user_goals_path(current_user)
     else
-      flash.now[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
+      flash.now[:danger] = "#{@goal.errors.messages.first[0]} #{@goal.errors.messages.first[1][0]}"
       render :new
     end
   end
+
 
   def update
     @goal = current_user.goals.find(params[:format])
@@ -40,10 +41,8 @@ class User::GoalsController < ApplicationController
     if new_total.to_i <= 7 && @goal.save
       flash.now[:success] = 'Goal was successfully updated.'
       redirect_to user_goals_path
-    elsif
-      flash.now[:danger] = "You cannot have more than seven #{@goal.category.name} goals!"
-      render :edit
     else
+      flash.now[:danger] = "#{@goal.errors.messages.first[0]} #{@goal.errors.messages.first[1][0]}"
       render :edit
     end
   end
