@@ -4,8 +4,6 @@ RSpec.feature "User can create a goal" do
   context "when providing all information" do
     scenario "they successfully create a goal" do
 
-
-      
       user = create(:user)
       category = create(:category)
       week = create(:week)
