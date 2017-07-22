@@ -28,4 +28,15 @@ RSpec.describe User, type: :model  do
       expect(user).to respond_to(:name, :github_id, :cohort, :role, :goals)
     end
   end
+
+  describe ".text_recipients" do
+    let!(:text_recipient) { create(:text_recipient_user) }
+    let!(:user) { create(:user) }
+
+    it "returns all text_recipients" do
+      text_recipients = described_class.text_recipients
+      expect(text_recipients).to include(text_recipient)
+      expect(text_recipients).to_not include(user)
+    end
+  end
 end

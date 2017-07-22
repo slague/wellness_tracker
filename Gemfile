@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'omniauth'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug'
