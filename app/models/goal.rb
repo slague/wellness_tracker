@@ -5,6 +5,8 @@ class Goal < ApplicationRecord
 
   validates :description, :category_id, :user_id, :week_id, :total_goal_count, presence: true
 
+# <><><>If Goals become restricted to ONLY 7 TOTAL per category, use these methods<><><>
+
   # def all_category_totals
   #   user.goals.where(category: category).pluck(:total_goal_count)
   # end

@@ -1,7 +1,9 @@
 FactoryGirl.define do
 
 factory :user do
-  github_id 1
+  sequence :github_id do |n|
+    "#{n}"
+  end
   name "Turing Student"
   cohort "1701"
   factory :user_with_goals do

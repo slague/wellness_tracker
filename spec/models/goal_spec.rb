@@ -53,17 +53,34 @@ RSpec.describe Goal, type: :model  do
   describe "methods" do
     it ".community_progress" do
       week = create(:week)
-      goal = create(:goal)
-      goal.update_attributes(week_id: week.id, category_id: 1, user_id: 1, progress_count: 1)
-      goal2 = create(:goal)
-      goal2.update(week_id: week.id, category_id: 1, user_id: 2, progress_count: 2)
-      goal3 = create(:goal)
-      goal3.update(week_id: week.id, category_id: 1, user_id: 3, progress_count: 1)
+      cat = create(:category)
+      user = create(:user)
+      user2 = create(:user)
+      user3 = create(:user)
 
-# require "pry"; binding.pry
-      comm_prog = Goal.community_progress(1, 1)
+      user.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 2, total_goal_count: 5)
+      user2.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 3)
+      user3.goals.create(description: "a goal",category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 4)
+
+      comm_prog = Goal.community_progress(week.id, cat.id)
 
       expect(comm_prog).to eq(4)
+    end
+
+    it ".community_progress" do
+      week = create(:week)
+      cat = create(:category)
+      user = create(:user)
+      user2 = create(:user)
+      user3 = create(:user)
+
+      user.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 2, total_goal_count: 5)
+      user2.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 3)
+      user3.goals.create(description: "a goal",category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 4)
+
+      comm_total = Goal.community_total(week.id, cat.id)
+      
+      expect(comm_total).to eq(12)
     end
   end
 end
