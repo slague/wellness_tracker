@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'database_cleaner'
+require 'support/github_login_helper'
 DatabaseCleaner.strategy = :truncation
 
 
@@ -18,15 +19,6 @@ RSpec.configure do |c|
     DatabaseCleaner.clean
   end
 end
-
-
-# def user_logs_in
-  # user = User.create(census_uid: 420, census_access_token:ENV["census_access_token"]) #change to census info
-  # allow_any_instance_of(ApplicationController)
-  #   .to receive(:current_user)
-  #   .and_return(user)
-# end
-
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 

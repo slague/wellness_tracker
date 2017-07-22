@@ -32,7 +32,6 @@ class User::GoalsController < ApplicationController
   end
 
   def update
-    # require "pry"; binding.pry
     @goal = current_user.goals.find(params[:format])
     @goal.update(goal_params)
     new_total = goal_params[:total_goal_count]
@@ -78,7 +77,6 @@ class User::GoalsController < ApplicationController
     end
 
     def set_goal
-      # require "pry"; binding.pry
       @goal = current_user.goals.find(params[:id])
     end
 

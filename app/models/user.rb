@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
   enum role: %w(default admin)
 
+  validates :github_id, presence: true
+
 end

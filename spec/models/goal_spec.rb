@@ -41,14 +41,46 @@ RSpec.describe Goal, type: :model  do
   describe "attributes" do
     it "has default 0 progress_count" do
       goal = create(:goal)
-
       expect(goal.progress_count).to eq(0)
     end
 
     it "responds to description, total_goal_count, category_id, week_id, user" do
       goal = create(:goal)
-
       expect(goal).to respond_to(:description, :user_id, :category_id, :total_goal_count, :progress_count, :week_id)
+    end
+  end
+
+  describe "methods" do
+    it ".community_progress" do
+      week = create(:week)
+      cat = create(:category)
+      user = create(:user)
+      user2 = create(:user)
+      user3 = create(:user)
+
+      user.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 2, total_goal_count: 5)
+      user2.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 3)
+      user3.goals.create(description: "a goal",category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 4)
+
+      comm_prog = Goal.community_progress(week.id, cat.id)
+
+      expect(comm_prog).to eq(4)
+    end
+
+    it ".community_progress" do
+      week = create(:week)
+      cat = create(:category)
+      user = create(:user)
+      user2 = create(:user)
+      user3 = create(:user)
+
+      user.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 2, total_goal_count: 5)
+      user2.goals.create(description: "a goal", category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 3)
+      user3.goals.create(description: "a goal",category_id: cat.id, week_id: week.id, progress_count: 1, total_goal_count: 4)
+
+      comm_total = Goal.community_total(week.id, cat.id)
+      
+      expect(comm_total).to eq(12)
     end
   end
 end
