@@ -4,26 +4,12 @@ RSpec.describe User, type: :model  do
   describe "validations" do
     context "a user is valid with all attributes" do
       it { is_expected.to validate_presence_of(:github_id)}
-      it { is_expected.to validate_presence_of(:name)}
-      it { is_expected.to validate_presence_of(:cohort)}
     end
   end
 
   context "invalid" do
     it "user is invalid without a github_id" do
       user = User.new(name: "Turing Student", cohort: "1701")
-
-      expect(user).to_not be_valid
-    end
-
-    it "user is invalid without a name" do
-      user = User.new(cohort: "1701", github_id: 2)
-
-      expect(user).to_not be_valid
-    end
-
-    it "is invalid without a cohort" do
-      user = User.new(name: "Turing Student", github_id: 2)
 
       expect(user).to_not be_valid
     end
