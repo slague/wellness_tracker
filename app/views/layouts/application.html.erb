@@ -13,17 +13,15 @@
 
     <%= render partial: 'layouts/navbar' %>
 
-
-    <div class="row">
-      <div class="col-lg-12">
+    <div class="flashes">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type %>">
-        <button type="button" class="close" data-dismiss='alert'>x</button>
-      <%= sanitize(message) %>
+          <button type="button" class="close" data-dismiss='alert'>x</button>
+          <%= sanitize(message) %>
       <% end %>
+        </div>
     </div>
-  </div>
-</div>
+
 
   <div class="container">
     <%= yield %>

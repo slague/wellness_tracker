@@ -8,7 +8,14 @@
     <%= f.label :cohort %>
     <%= f.text_field :cohort %><br><br>
 
+    <%= f.check_box :wants_reminder %>
+    <%= f.label :wants_reminder, 'Yes, I would like to receive reminder texts.' %>
 
-    <%= f.submit class: 'btn btn-warning'%>
+    <div class="phone">
+      <%= f.label :phone_number %>
+      <%= f.telephone_field :phone_number, placeholder: 'xxx-xxx-xxxx' %>
+    </div>
+
+    <%= f.submit "Update", class: 'btn btn-custom'%>
     <% end %>
   </div>

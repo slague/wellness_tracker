@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721164811) do
+ActiveRecord::Schema.define(version: 20170722212437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20170721164811) do
     t.index ["week_id"], name: "index_goals_on_week_id", using: :btree
   end
 
+  create_table "reminders", force: :cascade do |t|
+    t.string   "phone_number"
+    t.datetime "time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer  "census_uid"
     t.datetime "created_at",                      null: false
@@ -45,6 +52,8 @@ ActiveRecord::Schema.define(version: 20170721164811) do
     t.string   "cohort"
     t.integer  "github_id"
     t.string   "name"
+    t.string   "phone_number"
+    t.integer  "wants_reminder",      default: 0
   end
 
   create_table "week_numbers", force: :cascade do |t|

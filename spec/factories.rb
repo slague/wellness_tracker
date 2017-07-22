@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :reminder do
+
+  end
 
 factory :user do
   sequence :github_id do |n|
@@ -6,12 +9,20 @@ factory :user do
   end
   name "Turing Student"
   cohort "1701"
+
+  trait :text_recipient do
+    wants_reminder "1"
+  end
+
   factory :user_with_goals do
     goals { create_list(:goal, 3) }
   end
     factory :user_with_goal do
     goals { create_list(:goal, 1) }
   end
+
+  factory :text_recipient_user, traits: [:text_recipient]
+
 end
 
 factory :category do

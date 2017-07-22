@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if @user.save
+      @user.send_reminder
       flash[:success] = 'Account updated.'
       redirect_to user_goals_path
     else
@@ -20,6 +21,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :cohort)
+    params.require(:user).permit(:name, :cohort, :phone_number, :wants_reminder?)
   end
 end
