@@ -13,6 +13,20 @@ RSpec.describe User, type: :model  do
 
       expect(user).to_not be_valid
     end
+
+    it "if user wants to recieve texts reminders, phone number required" do
+      user = User.new(github_id: 1, name: "Turing Student", cohort: "1701", wants_reminder: "1")
+      user2 = User.new(github_id: 1, name: "Turing Student", cohort: "1701", wants_reminder: "1", phone_number: "123-456-7890")
+
+      expect(user).to_not be_valid
+      expect(user2).to be_valid
+    end
+
+    it "if user doesn't want t0 recieve texts reminders, phone number not required" do
+      user = User.new(github_id: 1, name: "Turing Student", cohort: "1701", wants_reminder: nil)
+
+      expect(user).to be_valid
+    end
   end
 
   describe "attributes" do
@@ -22,10 +36,16 @@ RSpec.describe User, type: :model  do
       expect(user.role).to eq("default")
     end
 
+    it "has default of false for wants_reminder" do
+      user = create(:user)
+
+      expect(user.wants_reminder?).to eq(false)
+    end
+
     it "responds to name, github_id, cohort, role, goals" do
       user = create(:user)
 
-      expect(user).to respond_to(:name, :github_id, :cohort, :role, :goals)
+      expect(user).to respond_to(:name, :github_id, :cohort, :role, :goals, :wants_reminder)
     end
   end
 

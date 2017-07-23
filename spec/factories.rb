@@ -11,7 +11,8 @@ factory :user do
   cohort "1701"
 
   trait :text_recipient do
-    wants_reminder? true
+    phone_number "123-456-7890"
+    wants_reminder "1"
   end
 
   factory :user_with_goals do
@@ -49,7 +50,7 @@ factory :goal do
   # progress_count 0
   total_goal_count 5
   user
-  week 
+  week
 end
 
 
