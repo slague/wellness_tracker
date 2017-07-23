@@ -19,7 +19,7 @@ class Reminder < ApplicationRecord
     )
     puts message.to
   end
-
+end
 
 #   def monday_reminder
 #     @twilio_number = ENV['TWILIO_NUMBER']
