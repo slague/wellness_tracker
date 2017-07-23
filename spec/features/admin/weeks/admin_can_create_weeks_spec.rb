@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Admin can create weeks" do
   context "when providing all information" do
-    scenario "they successfully create 6 weeks" do
+    xscenario "they successfully create 6 weeks" do
       week = WeekNumber.create(name: "one")
       week = WeekNumber.create(name: "two")
       week = WeekNumber.create(name: "three")

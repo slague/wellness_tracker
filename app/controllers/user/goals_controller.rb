@@ -24,7 +24,7 @@ class User::GoalsController < ApplicationController
     # if @goal.reasonable_total?(new_total) && @goal.save
     if @goal.save && new_total.to_i <= 7
       flash[:success] = "Goal was successfully created."
-      redirect_to user_goals_path(current_user)
+      redirect_to user_goals_path
     else
       flash.now[:danger] = "#{@goal.errors.messages.first[0]} #{@goal.errors.messages.first[1][0]}"
       render :new
