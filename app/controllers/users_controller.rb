@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Account updated.'
       redirect_to user_goals_path
     else
-      flash.now[:danger] = "Please enter a name and cohort."
+      flash.now[:danger] = "#{@user.errors.messages.first[0]} #{@user.errors.messages.first[1][0]}"
       render :edit
     end
 
@@ -20,6 +20,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :cohort, :phone_number, :wants_reminder?)
+    params.require(:user).permit(:name, :cohort, :phone_number, :wants_reminder)
   end
 end

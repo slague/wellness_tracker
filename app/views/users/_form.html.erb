@@ -8,8 +8,11 @@
     <%= f.label :cohort %>
     <%= f.text_field :cohort %><br><br>
 
-    <%= f.check_box :wants_reminder? %>
-    <%= f.label :wants_reminder?, 'Yes, I would like to receive reminder texts.' %>
+    <%= f.check_box :wants_reminder %>
+    <%= f.label :wants_reminder, 'Yes, I would like to receive reminder texts.' %>
+
+<!-- f.check_box :wants_reminder?, {}, true, false -->
+<!-- = check_box 'do_this', '', {}, 'true', 'false' -->
 
     <div class="phone">
       <%= f.label :phone_number %>

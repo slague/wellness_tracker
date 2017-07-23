@@ -3,10 +3,11 @@ class User < ApplicationRecord
   has_many :weeks, through: :goals
 
   enum role: %w(default admin)
-  enum wants_reminder: %w(0 1)
 
   validates :github_id, presence: true
+  validates :phone_number, presence: true, if: :wants_reminder?
 
-  scope :text_recipients, -> { where(wants_reminder?: true) }
+  scope :text_recipients, -> { where(wants_reminder: true) }
+
 
 end
