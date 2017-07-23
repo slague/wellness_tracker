@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if @user.save
-      @user.send_reminder
       flash[:success] = 'Account updated.'
       redirect_to user_goals_path
     else

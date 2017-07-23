@@ -33,5 +33,5 @@ def login(user)
   fill_in "Name", with: user.name
   fill_in "Name", with: user.cohort
 
-  click_on "Update User"
+  click_on "Update"
 end

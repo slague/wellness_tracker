@@ -5,21 +5,19 @@ class Reminder < ApplicationRecord
 
 
 
-  def send_message
-
-    @twilio_number = ENV['TWILIO_NUMBER']
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-
-    message = @client.account.messages.create(
-      :from => @twilio_number,
-      :to => phone_number,
-      :body => alert_message,
-     # US phone numbers can make use of an image as well.
-     # :media_url => image_url
-    )
-    puts message.to
-  end
-end
+#   def send_message
+#
+#     @twilio_number = ENV['TWILIO_NUMBER']
+#     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+#
+#     message = @client.account.messages.create(
+#       :from => @twilio_number,
+#       # :to =>  Scoped User. phone numbers
+#       :body =>
+#     )
+#     puts message.to
+#   end
+# end
 
 #   def monday_reminder
 #     @twilio_number = ENV['TWILIO_NUMBER']
@@ -53,8 +51,8 @@ end
 #     # Monday of each week
 #     # Sunday of each week
 #
-#     # minutes_before_appointment = 30.minutes
+#     # minutes_before_appointment = 30.minutes  Hard code this...Monday of each week
 #     # time - minutes_before_appointment
 #   end
 #
-# end
+end

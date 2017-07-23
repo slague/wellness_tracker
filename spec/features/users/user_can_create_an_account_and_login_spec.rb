@@ -20,7 +20,7 @@ describe "A user logs in to see his/her goals page" do
     fill_in "Name", with: "Turing Student"
     fill_in "Name", with: "1701"
 
-    click_on "Update User"
+    click_on "Update"
 
     expect(current_path).to eq(user_goals_path)
   end
