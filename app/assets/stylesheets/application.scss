@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 h1, h2, h3,h4, h5, h6, p, a {
@@ -123,8 +124,9 @@ details a{
 }
 
 span{
-  padding-left: 390px;
+  // padding-left: 390px;
   align-content: right;
+  float: right;
 }
 
 .form{
@@ -140,6 +142,8 @@ span{
 .week-date-display {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 30px;
+  // float: right;
 }
 
 /*GOALS*/

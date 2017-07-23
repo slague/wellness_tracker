@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'reminders/send_reminder'
+  # get 'reminders/send_reminder'
 
   root                                 to: 'sessions#show'
   get     '/auth/:provider/callback',  to: 'sessions#create'
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   resources :goals, only: [:index]
   resources :users, only: [:edit, :update]
 
-  post 'reminders/send_reminder' => 'reminders#send_reminder'
+  # post 'reminders/send_reminder' => 'reminders#send_reminder'
 
 end
