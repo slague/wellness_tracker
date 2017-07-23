@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_to user_goals_path(@user), notice: "Welcome Back"
+      redirect_to user_goals_path, notice: "Welcome Back"
 
     else
       @user.save
