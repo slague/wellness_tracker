@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
     if @user.persisted?
       session[:user_id] = @user.id
-      redirect_to user_goals_path, notice: "Welcome Back"
+      flash[:success] = "Welcome back, #{@user.name}."
+      redirect_to user_goals_path
 
     else
       @user.save
