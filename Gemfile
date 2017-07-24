@@ -18,7 +18,8 @@ gem 'autoprefixer-rails'
 gem 'omniauth'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
-gem 'twilio-ruby'
+gem 'twilio-ruby', '~> 5.0.0.rc26'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   gem 'byebug'

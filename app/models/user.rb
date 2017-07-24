@@ -10,4 +10,8 @@ class User < ApplicationRecord
   scope :text_recipients, -> { where(wants_reminder: true) }
 
 
+  def sanitize_phone_number
+    phone_number.gsub(/-/, '').prepend("+1")
+  end
+
 end

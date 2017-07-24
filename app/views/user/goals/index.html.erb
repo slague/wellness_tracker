@@ -29,7 +29,6 @@
         <%= link_to 'Delete', user_goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
 
-
       <div class="goal-second-row">
         <div class="add-tally"></div>
         <div class="subtract-tally"></div>
@@ -43,7 +42,12 @@
       <% else  %>
       <%= link_to image_tag("plus_sign.png", size: '28x28'), user_inc_user_goal_path(goal), method: :put%>
       <% end %>
-      *******COOL PROGRESS BAR GOES HERE***********
+
+       <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div> 
+
+      <!-- *******COOL PROGRESS BAR GOES HERE*********** -->
         <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
       </div>
 

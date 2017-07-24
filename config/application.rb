@@ -16,6 +16,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# config.active_job.queue_adapter = :delayed_job
+
 module WellnessTracker
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -26,7 +28,7 @@ module WellnessTracker
     config.generators do |g|
       g.orm             :active_record
       g.template_engine :erb
-      g.test_framework  :rspec, 
+      g.test_framework  :rspec,
                        fixture: false,
                        view_specs: false,
                        helper_specs: false,
@@ -39,6 +41,6 @@ module WellnessTracker
       g.jbuilder        false
       g.assets          false
     end
-    
+
   end
 end

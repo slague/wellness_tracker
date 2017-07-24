@@ -17,4 +17,12 @@ class Week < ApplicationRecord
       Week.create(week_number_id: num, start_date: dates.first, end_date: dates.last)
     end
   end
+
+  def self.get_start_dates
+    all.map { |week| week.start_date}
+  end
+
+  def self.get_end_dates
+    all.map { |week| week.end_date}
+  end
 end
