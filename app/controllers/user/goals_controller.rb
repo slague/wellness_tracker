@@ -3,7 +3,7 @@ class User::GoalsController < ApplicationController
   before_action :set_user, only: [:create, :update, :increment]
 
   def index
-    @goals = current_user.goals.where(week_id: current_week.id)
+    @goals = current_user.goals.where(week_id: current_week.id).order(:created_at)
   end
 
   def show
