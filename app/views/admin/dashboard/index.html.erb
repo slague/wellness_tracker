@@ -1,16 +1,81 @@
-<div class="top-row-links">
-  <hr>
-  <ul class="links-left">
-    <%= link_to "Turing Totals", goals_path %> &nbsp;
-    <%= link_to "Back to my goals", user_goals_path %>
-  </ul>
-  <hr>
-</div>
+<hr>
+  <div>
+    <%= link_to "Past goals" %> &nbsp;
+    <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
+  <span>
+    <%= image_tag('schedule-reminder.svg', size: '18x18') %>
+    <%= link_to "Sign up for text reminders", edit_user_path(current_user) %>&nbsp;&nbsp;
+  </span>
+  </div>
+<hr>
+  <h2>Welcome, <%= current_user.name %></h2>
+  <h3>This week is: <%=current_week.week_number.name%></h3><h4><%= current_week.start_date.strftime("%B %e") %>-<%= current_week.end_date.strftime("%e %Y") %></h4>
+<hr>
+
+<div class="admin row">
+  <!-- begin tabbed section -->
+  <div class="card col-md-9" id="toggle">
+    <div class="card_header">
+      <ul class = "nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#">Set Weeks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#">Weekly Winners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#">Mod winners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#">Cohorts</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="overview" role="tabpanel">
+          <%#= render partial: 'property_header' %>
+          <div class="text-left">
+          <%# if @property.owner == current_user %>
+            <%#= link_to "Edit this property", edit_property_path(@property), class: 'btn btn-custom' %><br><br>
+            <%#= link_to "View property availability", property_property_availabilities_path(@property), class: 'btn btn-custom' %>
+          <% #end %>
+        </div>
+        <hr>
+        <%#= render partial: 'list_info' %>
+        <hr>
+        <h3>About this listing</h3>
+        <p><%#= @property.description %></p>
+        <hr>
+        <h3>The space</h3>
+        <%#= render partial: 'the_space' %>
+      </div>
 
 
 
-<%= link_to "Set Weeks", new_admin_week_path %> <br>
 
-LINK TO SEE THIS WEEK'S USERS W/ 100% goal achievement <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Set Weeks", new_admin_week_path%>&nbsp;&nbsp;Weekly winners&nbsp;&nbsp;Mod winners
+   <hr>
+<% @weeks.each do |week| %>
+ <h6><%= week.start_date.strftime("%B %e") %>-<%= week.end_date.strftime("%e %Y") %></h6>
+
+    <%User.achievers(week.id).each do |user|%>
+    <%= user.name %>
+    <%end %>
+ <%end%>
+
 
 LINK TO SEE THIS MOD'S USERS W/ 100% goal achievement <br>

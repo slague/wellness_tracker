@@ -1,20 +1,28 @@
 class GoalsController < ApplicationController
 
   def index
-    @sweat = Category.find(1)
-    @sleep = Category.find(2)
-    @personal = Category.find(3)
-    @nutrition = Category.find(4)
-    
-    @sweat_progress = Goal.community_progress(current_week.id, 1)
-    @sleep_progress = Goal.community_progress(current_week.id, 2)
-    @personal_progress = Goal.community_progress(current_week.id, 3)
-    @nutrition_progress = Goal.community_progress(current_week.id, 4)
+    @categories = Category.all
+  end
 
-    @sweat_total = Goal.community_total(current_week.id, 1)
-    @sleep_total = Goal.community_total(current_week.id, 2)
-    @personal_total = Goal.community_total(current_week.id, 3)
-    @nutrition_total = Goal.community_total(current_week.id, 4)
+  def increment
+    @goal = current_user.goals.find(params[:id])
+    new_count = @goal.progress_count + 1
+
+
+    if @goal.update(progress_count: new_count)
+      render json: {progress_count: @goal.progress_count, total_goal_count: @goal.total_goal_count}.to_json
+    end
+    # if @goal.update(progress_count: new_count)
+    #   flash.now[:success] = 'You achieved your goal for the week. Awesome!'
+    #   redirect_to user_goals_path
+    # elsif @goal.update(progress_count: new_count)
+    #   flash.now[:success] = 'Nicely done!'
+    #   redirect_to user_goals_path
+    # else
+    #   flash.now[:danger] = 'Unable to increment goal.'
+    #   redirect_to user_goals_path
+    # end
+
   end
 
 end

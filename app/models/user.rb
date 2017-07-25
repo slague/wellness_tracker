@@ -14,4 +14,32 @@ class User < ApplicationRecord
     phone_number.gsub(/-/, '').prepend("+1")
   end
 
+  def personal_weekly_progress(week_id)
+     goals.where(week_id: week_id).map {|goal| goal.progress_count }.reduce(:+)
+  end
+  def personal_weekly_total_achieved(week_id)
+     goals.where(week_id: week_id).map {|goal| goal.total_goal_count }.reduce(:+)
+  end
+
+  def achieved_all_goals_this_week?(week_id)
+   personal_weekly_progress(week_id) == personal_weekly_total_achieved(week_id)
+  end
+
+  def self.achievers(week_id)
+    achievers = []
+    all.each do |x|
+      if x.achieved_all_goals_this_week?(week_id)
+        achievers << x
+      end
+    end
+   achievers
+  end
+
+  def self.select_weekly_winner(week_id)
+    winner = User.achievers(week_id).shuffle.pop
+    # don't want this to change every time it is run... run once and save the user as that week's winner
+
+    # week = current_week
+    # winner.id == week.winner_id
+  end
 end

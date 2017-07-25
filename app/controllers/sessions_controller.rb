@@ -3,7 +3,12 @@ class SessionsController < ApplicationController
   def create
     @user= User.find_or_initialize_by(github_id: omniauth_options[:uid])
 
-    if @user.persisted?
+    if @user.save && current_admin?
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome back, #{@user.name}."
+      redirect_to admin_dashboard_path
+
+    elsif @user.persisted?
       session[:user_id] = @user.id
       flash[:success] = "Welcome back, #{@user.name}."
       redirect_to user_goals_path

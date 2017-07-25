@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :goals
-    put '/goals/:id/inc', to: 'goals#increment', as: 'inc_user_goal'
   end
+  put 'goals/:id/inc', to: 'goals#increment', as: 'inc_goal'
 
   resources :goals, only: [:index]
   resources :users, only: [:edit, :update]
