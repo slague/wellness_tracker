@@ -20,6 +20,7 @@ gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-c
 gem 'omniauth-github'
 gem 'twilio-ruby', '~> 5.0.0.rc26'
 gem 'delayed_job_active_record'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug'

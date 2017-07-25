@@ -5,6 +5,7 @@ class Goal < ApplicationRecord
 
   validates :description, :category_id, :user_id, :week_id, :total_goal_count, presence: true
 
+
   def self.community_progress(week_id, category_id)
       where(week_id: week_id).where(category_id: category_id).map { |goal| goal.progress_count }.reduce(:+)
   end
@@ -17,10 +18,11 @@ end
 
 # <><><>If Goals become restricted to ONLY 7 TOTAL per category, use these methods<><><>
 
+
 # def all_category_totals
 #   user.goals.where(category: category).pluck(:total_goal_count)
 # end
-#
+# #
 # def category_total
 #   all_category_totals.reduce(:+)
 # end

@@ -115,12 +115,27 @@ details a{
 
 .progress{
   width: 250px;
-  padding-right: 20px;
+  // padding-right: 20px;
 }
 
 .top-row-links{
   color: #05C2D1;
   font-size: 14px;
+}
+
+// progress bar by category cat-1 = sweat, cat-2 = sleep, cat-3 = personal, cat-4 = nutrition
+#cat-1{
+  background-color: #DC665D !important;
+}
+#cat-2{
+  background-color: #64A7F3 !important;
+}
+#cat-3{
+  background-color: #E6923B !important;
+}
+
+#cat-4{
+  background-color:  #83BC54 !important;
 }
 
 
@@ -182,6 +197,7 @@ li{
 
 .total-progress-bar{
   padding: 20px;
+  justify-content: space-between;
 }
 
 .actions{
