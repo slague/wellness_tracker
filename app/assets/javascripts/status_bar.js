@@ -1,30 +1,25 @@
 $( document ).ready(function(){
-  $('.plus-sign').on("click", updateProgressBar)
+  $('.goal-inc').on("click", updateProgressBar)
 })
 
 function updateProgressBar(event){
-  event.preventDefault;
-  // var plusSign = this
-  var progressBar = this.parentElement.children[1].children[0]
-  var a = $(this).find('a')[0]
-  var url = $(a).attr('href')
-  // var method = $(a).attr('data-method')
+  var progressBar = this.parentElement.parentElement.children[1].children[0]
+  var id = this.id
 
   $.ajax({
-    type: method,
-    url: url,
-    data
-  }).done(incrementProgressBar);
-
-}
-      // $(progressBar).css({width: "((progress_count.to_f / total_goal_count.to_f) * 100).round}%")
-      // the new width ="#{((progress_count.to_f / total_goal_count.to_f) * 100).round}%"
-function incrementProgressBar(){
-  // debugger
-  $(progressBar).attr("aria-valuenow", "((progress_count.to_f / total_goal_count.to_f) * 100).round}")
+    type: 'put',
+    url: `/goals/${id}/inc`
+  }).success(incrementProgressBar.bind(null, id))
+  .fail(error => console.error(error))
 }
 
-// // ajax request to increment send the goal params
-// // upon successful increment return  progress_count and total_goal_count
-// // do the math here and change the css
-// // .css selector  change width
+function incrementProgressBar(id, data){
+  var value = (data.progress_count / data.total_goal_count * 100)
+  var bar = $(`div[goal-id="${id}"]`)
+  var parent = bar.parent()
+  var fraction = parent.siblings()[1].innerText
+  bar.detach()
+  bar.css('width', value + '%')
+  parent.append(bar)
+  parent.siblings()[1].innerText = data.progress_count + "/" + data.total_goal_count
+}

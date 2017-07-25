@@ -41,14 +41,15 @@
         </div>
       <% else  %>
       <div class='plus-sign'>
-        <%#= image_tag("plus_sign.png", size: '28x28')%>
-        <%= link_to image_tag("plus_sign.png", size: '28x28'), user_inc_user_goal_path(goal), method: :put%>
+        <!-- <img src="plus_sign.png" style='size: 28x28' class="goal-inc" id="<%#=goal.id%>"> -->
+        <%= image_tag('plus_sign.png', size: '28x28', class: 'goal-inc', id: goal.id) %>
+        <%#= link_to image_tag("plus_sign.png", size: '28x28'), user_inc_user_goal_path(goal), method: :put%>
         <%#= link_to image_tag("plus_sign.png", size: '28x28')%>
       </div>
       <% end %>
 
        <div class="progress">
-        <div id="cat-<%=goal.category_id%>", class="progress-bar" role="progressbar" style="width:  <%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>%;" aria-valuenow="<%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div goal-id="<%=goal.id%>" id="cat-<%=goal.category_id%>", class="progress-bar" role="progressbar" style="width:  <%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>%;" aria-valuenow="<%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
 
        <!-- <div class="progress">
