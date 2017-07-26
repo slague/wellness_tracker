@@ -17,7 +17,6 @@ function incrementProgressBar(id, data){
   var value = (data.progress_count / data.total_goal_count * 100)
   var bar = $(`div[goal-id="${id}"]`)
   var parent = bar.parent()
-  var fraction = parent.siblings()[1].innerText
   bar.detach()
   bar.css('width', value + '%')
   parent.append(bar)

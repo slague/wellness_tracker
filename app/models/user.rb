@@ -9,7 +9,13 @@ class User < ApplicationRecord
 
   scope :text_recipients, -> { where(wants_reminder: true) }
 
+  after_update :send_confirmation_message, if: -> { self.wants_reminder? && (wants_reminder_changed? || phone_number_changed?) }
 
+
+  def send_confirmation_message
+    Reminder.send_confirmation_message(self)
+    # Call the method in Reminder class, passing in the user we want notified
+  end
   def sanitize_phone_number
     phone_number.gsub(/-/, '').prepend("+1")
   end
