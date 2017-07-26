@@ -83,4 +83,3 @@ production:
   database: wellness_tracker_production
   username: wellness_tracker
   password: <%= ENV['WELLNESS_TRACKER_DATABASE_PASSWORD'] %>
-  host: localhost
