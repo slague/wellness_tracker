@@ -1,10 +1,10 @@
 class Reminder < ApplicationRecord
 
-  def send_confirmation_message(user)
+  def self.send_confirmation_message(user)
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
-    @client.account.messages.create(
+    @client.messages.create(
       from: @twilio_number,
       to:  user.sanitize_phone_number,
       body: "You've signed up for reminder texts from the Turing Wellness Tracker. You will receive a reminder at the start of the week to set your goals, and a reminder at the end of the week to submit your goals. To opt of texts visit the Wellness Tracker website."
@@ -26,7 +26,7 @@ class Reminder < ApplicationRecord
     # puts message.to
   end
 
-  def send_monday_message
+  def send_sunday_message
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
