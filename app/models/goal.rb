@@ -14,6 +14,10 @@ class Goal < ApplicationRecord
     where(week_id: week_id).where(category_id: category_id).map { |goal| goal.total_goal_count }.reduce(:+)
   end
 
+  def achieved?
+    total_goal_count == progress_count
+  end
+
 end
 
 # <><><>If Goals become restricted to ONLY 7 TOTAL per category, use these methods<><><>

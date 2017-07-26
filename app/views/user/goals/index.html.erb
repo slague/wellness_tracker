@@ -12,7 +12,7 @@
 <section class="user-goals">
   <article class="week-date-display">
     <h2><%= current_week.week_number.name %></h2>
-    <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
+    <h4 class="day-date"><%= current_week.format_start_date %> - <%= current_week.format_end_date %></h4>
   </article>
 
   <% @goals.each do |goal| %>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="goal-second-row">
-        <% if  (goal.total_goal_count == goal.progress_count)%>
+        <% if  goal.achieved? %>
         <div class="icons">
           <%= image_tag("http://i.imgur.com/f7s3dQN.png", size:"30x30") %>
         </div>
