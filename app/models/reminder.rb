@@ -12,43 +12,31 @@ class Reminder < ApplicationRecord
   end
 
 
-  def send_monday_message
+
+  def self.send_monday_message
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    User.text_recipients.each do |user|
 
-    @client.account.messages.create(
+    @client.messages.create(
       from: @twilio_number,
-      to:  User.text_recients.each { |user| user.sanitize_phone_number },
+      to:   user.sanitize_phone_number,
       body: "It's a new week. Remember to set your Wellness Goals!"
       )
-    # puts message.to
+    end
   end
 
-  def send_sunday_message
+  def self.send_sunday_message
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 
-    @client.account.messages.create(
-      from: @twilio_number,
-      to:  User.text_recients.each { |user| user.sanitize_phone_number },
-      body: "Remember to submit your Wellness Goals by the end of the day!"
-      )
+    User.text_recipients.each do |user|
+      @client.messages.create(
+        from: @twilio_number,
+        to:  user.sanitize_phone_number,
+        body: "Remember to submit your Wellness Goals by the end of the day!"
+        )
+    end
   end
 
-
-  def run_monday
-    Week.get_start_dates
-    # this gets all of the start dates
-    # add time - 9:00 AM MST
-  end
-
-
-  def run_sunday
-    Week.get_end_dates
-    # this gets all of the end dates
-    # add time - 6:00 PM MST
-  end
-
-  handle_asynchronously :send_monday_message, :run_at => Proc.new { |i| i.run_monday }
-  handle_asynchronously :send_sunday_message, :run_at => Proc.new { |i| i.run_sunday }
 end
