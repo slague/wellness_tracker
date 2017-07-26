@@ -31,10 +31,10 @@
       <div class="goal-second-row">
         <% if  (goal.total_goal_count == goal.progress_count)%>
         <div class="icons">
-          <%= image_tag("mod-winners.svg") %>
+          <%= image_tag("http://i.imgur.com/f7s3dQN.png", size:"30x30") %>
         </div>
         <% else  %>
-        <div class='plus-sign'>
+        <div class='plus-sign' id="<%=goal.id%>">
           <%= image_tag('plus_sign.png', size: '28x28', class: 'goal-inc', id: goal.id) %>
         </div>
         <% end %>

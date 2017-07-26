@@ -21,4 +21,8 @@ function incrementProgressBar(id, data){
   bar.css('width', value + '%')
   parent.append(bar)
   parent.siblings()[1].innerText = data.progress_count + "/" + data.total_goal_count
+  // debugger
+  if(data.progress_count == data.total_goal_count){
+    $(parent.siblings()[0]).replaceWith(`<div class="icons"><img src="http://i.imgur.com/f7s3dQN.png" height="30" width="30"></div>`);
+  }
 }
