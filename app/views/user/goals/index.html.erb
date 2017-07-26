@@ -1,23 +1,22 @@
-
-    <hr>
-    <div>
-      <%= link_to "Past goals" %> &nbsp;
-      <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
+<hr>
+  <div>
+    <%= link_to "Past goals" %> &nbsp;
+    <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
     <span>
       <%= image_tag('schedule-reminder.svg', size: '18x18') %>
       <%= link_to "Sign up for text reminders", edit_user_path(current_user) %>&nbsp;&nbsp;
     </span>
   </div>
-    <hr>
+<hr>
 
-  <section class="user-goals">
-    <article class="week-date-display">
-      <h2><%= current_week.week_number.name %></h2>
-      <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
-    </article>
+<section class="user-goals">
+  <article class="week-date-display">
+    <h2><%= current_week.week_number.name %></h2>
+    <h4 class="day-date"><%= current_week.start_date.strftime("%A %B %d %y") %> - <%= current_week.end_date.day %></h4>
+  </article>
 
-    <% @goals.each do |goal| %>
-      <article class="goal-first-row">
+  <% @goals.each do |goal| %>
+    <article class="goal-first-row">
       <div class="goal_<%= goal.category.name %>">
         <%#= ## CATEGORY ICON %>
         <div class='goal-title-icon'>
@@ -25,48 +24,33 @@
           <h3><%= goal.description %></h3>
         </div>
         <div class="see-more"></div>
-        <%= link_to 'Edit', edit_user_goal_path(goal) %>
-        <%= link_to 'Delete', user_goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_user_goal_path(goal) %>
+          <%= link_to 'Delete', user_goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
 
       <div class="goal-second-row">
-        <!-- <div class="add-tally"></div> -->
-        <!-- <div class="subtract-tally"></div> -->
-        <!-- <div class="progress-bar"> -->
-          <!-- <div class="completed-bar"></div> -->
-        <!-- </div> -->
         <% if  (goal.total_goal_count == goal.progress_count)%>
         <div class="icons">
           <%= image_tag("mod-winners.svg") %>
         </div>
-      <% else  %>
-      <div class='plus-sign'>
-        <!-- <img src="plus_sign.png" style='size: 28x28' class="goal-inc" id="<%#=goal.id%>"> -->
-        <%= image_tag('plus_sign.png', size: '28x28', class: 'goal-inc', id: goal.id) %>
-        <%#= link_to image_tag("plus_sign.png", size: '28x28'), user_inc_user_goal_path(goal), method: :put%>
-        <%#= link_to image_tag("plus_sign.png", size: '28x28')%>
-      </div>
-      <% end %>
+        <% else  %>
+        <div class='plus-sign'>
+          <%= image_tag('plus_sign.png', size: '28x28', class: 'goal-inc', id: goal.id) %>
+        </div>
+        <% end %>
 
        <div class="progress">
-        <div goal-id="<%=goal.id%>" id="cat-<%=goal.category_id%>", class="progress-bar" role="progressbar" style="width:  <%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>%;" aria-valuenow="<%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>" aria-valuemin="0" aria-valuemax="100"></div>
+
+        <div id="cat-<%=goal.category_id%>" goal-id="<%=goal.id%>" class="progress-bar" role="progressbar" style="width:  <%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>%;" aria-valuenow="<%= ((goal.progress_count / goal.total_goal_count.to_f) * 100).round%>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+      <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
       </div>
 
-       <!-- <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-      </div> -->
-
-
-
-      <!-- *******COOL PROGRESS BAR GOES HERE*********** -->
-        <h4><%= goal.progress_count %>/<%= goal.total_goal_count %></h4>
-      </div>
-
-      <div class="divider"></div>
+    <div class="divider"></div>
     </article>
     <hr>
     <% end %>
-
   </section>
 
   <br>

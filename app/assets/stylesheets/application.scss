@@ -124,19 +124,30 @@ details a{
 }
 
 // progress bar by category cat-1 = sweat, cat-2 = sleep, cat-3 = personal, cat-4 = nutrition
+.progress-bar[aria-valuenow="0"] {
+  color: $text-color;
+  min-width: 0%;
+  background: transparent;
+  box-shadow: none;
+}
+
 #cat-1{
-  background-color: #DC665D !important;
+  // width: 0%;
+  background-color: #DC665D;
 }
 #cat-2{
-  background-color: #64A7F3 !important;
+  background-color: #64A7F3;
 }
+
 #cat-3{
-  background-color: #E6923B !important;
+  background-color: #E6923B;
+  // background-color: #E6923B !important;
 }
 
 #cat-4{
-  background-color:  #83BC54 !important;
+  background-color:  #83BC54;
 }
+
 
 
 .field{
