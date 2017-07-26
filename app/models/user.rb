@@ -14,21 +14,20 @@ class User < ApplicationRecord
 
   def send_confirmation_message
     Reminder.send_confirmation_message(self)
-    # Call the method in Reminder class, passing in the user we want notified
   end
   def sanitize_phone_number
     phone_number.gsub(/-/, '').prepend("+1")
   end
 
-  def personal_weekly_progress(week_id)
+  def weekly_progress(week_id)
      goals.where(week_id: week_id).map {|goal| goal.progress_count }.reduce(:+)
   end
-  def personal_weekly_total_achieved(week_id)
+  def weekly_total_achieved(week_id)
      goals.where(week_id: week_id).map {|goal| goal.total_goal_count }.reduce(:+)
   end
 
   def achieved_all_goals_this_week?(week_id)
-   personal_weekly_progress(week_id) == personal_weekly_total_achieved(week_id)
+   weekly_progress(week_id) == weekly_total_achieved(week_id)
   end
 
   def self.achievers(week_id)

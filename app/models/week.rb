@@ -25,4 +25,17 @@ class Week < ApplicationRecord
   def self.get_end_dates
     all.map { |week| week.end_date}
   end
+
+  def self.order_by_created_at
+    all.order(:created_at)
+  end
+
+  def format_start_date
+    self.start_date.strftime("%B %e")
+  end
+
+  def format_end_date
+    self.end_date.strftime("%e %Y")
+
+  end
 end

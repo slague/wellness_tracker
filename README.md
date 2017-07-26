@@ -24,5 +24,5 @@ Setup
 * Deployment
 
 This application is currently under development. This README will be updated as progress is made and the app is deployed to production.  
-[Staging Link](https://well-track-staging.herokuapp.com)
-[Production Link](https://turing-wellness-tracker.herokuapp.com/)
+* [Staging Link](https://well-track-staging.herokuapp.com)
+* [Production Link](https://turing-wellness-tracker.herokuapp.com/)

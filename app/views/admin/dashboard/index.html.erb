@@ -9,7 +9,7 @@
   </div>
 <hr>
   <h2>Welcome, <%= current_user.name %></h2>
-  <h3>This week is: <%=current_week.week_number.name%></h3><h4><%= current_week.start_date.strftime("%B %e") %>-<%= current_week.end_date.strftime("%e %Y") %></h4>
+  <h3>This week is: <%=current_week.week_number.name%></h3><h4><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h4>
 <hr>
 
 <div class="admin row">
@@ -40,14 +40,6 @@
             <%#= link_to "View property availability", property_property_availabilities_path(@property), class: 'btn btn-custom' %>
           <% #end %>
         </div>
-        <hr>
-        <%#= render partial: 'list_info' %>
-        <hr>
-        <h3>About this listing</h3>
-        <p><%#= @property.description %></p>
-        <hr>
-        <h3>The space</h3>
-        <%#= render partial: 'the_space' %>
       </div>
 
 
@@ -70,8 +62,9 @@
 <%= link_to "Set Weeks", new_admin_week_path%>&nbsp;&nbsp;Weekly winners&nbsp;&nbsp;Mod winners
    <hr>
 <% @weeks.each do |week| %>
- <h6><%= week.start_date.strftime("%B %e") %>-<%= week.end_date.strftime("%e %Y") %></h6>
+ <h6><%= week.format_start_date %>-<%= week.format_end_date %></h6>
 
+<!-- NEEDS REFACTORING -->
     <%User.achievers(week.id).each do |user|%>
     <%= user.name %>
     <%end %>
