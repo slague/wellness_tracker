@@ -8,7 +8,7 @@ WeekNumber.create(name: "Week 4")
 WeekNumber.create(name: "Week 5")
 WeekNumber.create(name: "Week 6")
 
-# Week.create(start_date: Date.yesterday, end_date: Date.today, week_number: WeekNumber.last)
+Week.create(start_date: Date.yesterday, end_date: Date.today, week_number: WeekNumber.last)
 # Goal.create(description: "Run 1 mile", total_goal_count: 2, user: User.last, week: Week.last, category: Category.last)
 
 
