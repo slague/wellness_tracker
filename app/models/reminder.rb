@@ -9,8 +9,6 @@ class Reminder < ApplicationRecord
       to:  user.sanitize_phone_number,
       body: "You've signed up for reminder texts from the Turing Wellness Tracker. You will receive a reminder at the start of the week to set your goals, and a reminder at the end of the week to submit your goals. To opt of texts visit the Wellness Tracker website."
       )
-    # send automatically when a user opts in to text reminders
-    # puts message.to
   end
 
 
@@ -35,7 +33,6 @@ class Reminder < ApplicationRecord
       to:  User.text_recients.each { |user| user.sanitize_phone_number },
       body: "Remember to submit your Wellness Goals by the end of the day!"
       )
-    # puts message.to
   end
 
 

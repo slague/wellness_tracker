@@ -52,42 +52,27 @@ details {
   // padding-left: 15px;
   color: white;
   font-size: 14px;
-  padding-right: 15px;
+  padding-right: 25px;
   padding-top: 65px;
   float: right;
 }
 
-details a{
-  color: #05C2D1;
+.instructions {
+  // padding-left: 15px;
+  color: #303332;
+  // font-size: 14px;
+  // padding-right: 15px;
+  padding-top: 30px;
+  float: left;
 }
 
 // summary::-webkit-details-marker {
 //   display: none
 // }
-// .admin-link{
-//   padding-top: 10px;
-//   background-color: #05C2D1;
-//   font-size: 14px;
-//   color: white;
-//   padding-left: 15px;
-// }
 
-// .admin-link a{
-//   color: white;
-// }
-//
-// .logout{
-//   font-size: 14px;
-//   // color: white;
-//   // float: right;
-//   // padding-right: 15px;
-//   // padding-top: 55px;
-//   // color: white;
-// }
-//
-// .logout a{
-//   color: white;
-// }
+details a{
+  color: #05C2D1;
+}
 
 .app-title{
   color: white;
@@ -124,19 +109,30 @@ details a{
 }
 
 // progress bar by category cat-1 = sweat, cat-2 = sleep, cat-3 = personal, cat-4 = nutrition
+.progress-bar[aria-valuenow="0"] {
+  color: $text-color;
+  min-width: 0%;
+  background: transparent;
+  box-shadow: none;
+}
+
 #cat-1{
-  background-color: #DC665D !important;
+  // width: 0%;
+  background-color: #DC665D;
 }
 #cat-2{
-  background-color: #64A7F3 !important;
+  background-color: #64A7F3;
 }
+
 #cat-3{
-  background-color: #E6923B !important;
+  background-color: #E6923B;
+  // background-color: #E6923B !important;
 }
 
 #cat-4{
-  background-color:  #83BC54 !important;
+  background-color:  #83BC54;
 }
+
 
 
 .field{
