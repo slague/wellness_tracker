@@ -30,12 +30,15 @@
     </div>
     <div id="week-winners" class="tab-pane fade">
       <h3>Weekly Winners</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      Click to select a random winner for the _____ week
+      current week's 100% goal achievers =
+      <% User.achievers(current_week).each do |achiever| %>
+      <%= achiever.name %>
+      <% end %>
     </div>
     <div id="mod-winners" class="tab-pane fade">
       <h3>Mod Winners</h3>
       <p>The following students have achieved all of thier goals this mod.</p>
-      <%= User.achievers() %>
     </div>
     <div id="cohorts" class="tab-pane fade">
       <h3>Cohorts</h3>
