@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :weeks, through: :goals
+  has_many :winners
 
   enum role: %w(default admin)
 
@@ -42,6 +43,7 @@ class User < ApplicationRecord
 
   def self.select_weekly_winner(week_id)
     winner = User.achievers(week_id).shuffle.pop
+    Winner.create(name: winner.name, week_id: week_id, cohort: winner.cohort)
     # don't want this to change every time it is run... run once and save the user as that week's winner
 
     # week = current_week

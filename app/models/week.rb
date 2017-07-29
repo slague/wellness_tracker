@@ -1,7 +1,9 @@
 class Week < ApplicationRecord
   belongs_to :week_number
+  belongs_to :mod
   has_many :goals
   has_many :users, through: :goals
+  # has_one :winner--- not sure syntax here
 
   validates :start_date, :end_date, presence: true
 
