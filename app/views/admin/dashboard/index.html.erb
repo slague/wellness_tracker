@@ -7,42 +7,40 @@
     <%= link_to "Sign up for text reminders", edit_user_path(current_user) %>&nbsp;&nbsp;
   </span>
   </div>
-<hr>
-  <h2>Welcome, <%= current_user.name %></h2>
-  <h3>This week is: <%=current_week.week_number.name%></h3><h4><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h4>
-<hr>
+  <hr>
 
-<div class="admin row">
-  <!-- begin tabbed section -->
-  <div class="card col-md-9" id="toggle">
-    <div class="card_header">
-      <ul class = "nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#">Set Weeks</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#">Weekly Winners</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#">Mod winners</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#">Cohorts</a>
-        </li>
-      </ul>
+<div class="container">
+  <h2>Welcome, <%= current_user.name %></h2><br>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#current"><%= image_tag("http://i.imgur.com/UB6HRei.png", size:"50x50") %>&nbsp;Current Mod</a></li>
+    <li><a data-toggle="tab" href="#set-weeks"><%= image_tag("http://i.imgur.com/Ako3axd.png", size:"50x50") %>&nbsp;Set Weeks</a></li>
+    <li><a data-toggle="tab" href="#week-winners"><%= image_tag("http://i.imgur.com/97Ommhs.png", size:"50x50") %>&nbsp;Weekly Winners</a></li>
+    <li><a data-toggle="tab" href="#mod-winners"><%= image_tag("http://i.imgur.com/Sth6Wis.png", size:"50x50") %>&nbsp;Mod Winners</a></li>
+    <li><a data-toggle="tab" href="#cohorts"><%= image_tag("http://i.imgur.com/3UKZnCg.png", size:"50x50") %>&nbsp;Cohorts</a></li>
+  </ul>
 
-      <div class="tab-content">
-        <div class="tab-pane active" id="overview" role="tabpanel">
-          <%= render  %>
-          <div class="text-left">
-          <%# if @property.owner == current_user %>
-            <%#= link_to "Edit this property", edit_property_path(@property), class: 'btn btn-custom' %><br><br>
-            <%#= link_to "View property availability", property_property_availabilities_path(@property), class: 'btn btn-custom' %>
-          <% #end %>
-        </div>
-      </div>
-
-
+  <div class="tab-content">
+    <div id="current" class="tab-pane fade in active">
+        <h1>This is <%=current_week.week_number.name%></h1><h4><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h4>
+        <h5>MODS WEEKS GO HERE</h5>
+      <hr>
+    </div>
+    <div id="set-weeks" class="tab-pane fade">
+      <%= render partial: "set_weeks" %>
+    </div>
+    <div id="week-winners" class="tab-pane fade">
+      <h3>Weekly Winners</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="mod-winners" class="tab-pane fade">
+      <h3>Mod Winners</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+    <div id="cohorts" class="tab-pane fade">
+      <h3>Cohorts</h3>
+    </div>
+  </div>
+</div>
 
 
 
@@ -53,22 +51,14 @@
 
 
 
-
-
-
-
-
-
-<%= link_to "Set Weeks", new_admin_week_path%>&nbsp;&nbsp;Weekly winners&nbsp;&nbsp;Mod winners
-   <hr>
-<% @weeks.each do |week| %>
- <h6><%= week.format_start_date %>-<%= week.format_end_date %></h6>
+<%# @weeks.each do |week| %>
+ <h6><%#= week.format_start_date %>-<%#= week.format_end_date %></h6>
 
 <!-- NEEDS REFACTORING -->
-    <%User.achievers(week.id).each do |user|%>
-    <%= user.name %>
-    <%end %>
- <%end%>
+    <%#User.achievers(week.id).each do |user|%>
+    <%#= user.name %>
+    <%#end %>
+ <%#end%>
 
 
-LINK TO SEE THIS MOD'S USERS W/ 100% goal achievement <br>
+<!-- LINK TO SEE THIS MOD'S USERS W/ 100% goal achievement <br> -->
