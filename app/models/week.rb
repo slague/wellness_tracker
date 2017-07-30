@@ -3,11 +3,11 @@ class Week < ApplicationRecord
   belongs_to :mod
   has_many :goals
   has_many :users, through: :goals
-  # has_one :winner--- not sure syntax here
+  has_one :winner
 
   validates :start_date, :end_date, presence: true
 
-  def self.set_weeks(num_of_weeks, weeks_start)
+  def self.set_weeks(num_of_weeks, weeks_start, mod_id)
     week_nums = [*1..num_of_weeks]
     starts_ends = {}
     start = weeks_start
@@ -16,7 +16,7 @@ class Week < ApplicationRecord
       start +=7
     end
     starts_ends.each do |num, dates|
-      Week.create(week_number_id: num, start_date: dates.first, end_date: dates.last)
+      Week.create(week_number_id: num, start_date: dates.first, end_date: dates.last, mod_id: mod_id)
     end
   end
 

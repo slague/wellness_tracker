@@ -1,12 +1,17 @@
-<h1>Set weeks</h1><br>
+<h1>Set weeks</h1><hr>
 
 <%= form_tag admin_weeks_path  do %>
 
-      <%= label_tag :number_of_weeks %>
-      <%= select_tag :number_of_weeks, options_for_select(1..6) %><br><br>
+  <%= label_tag :mod_id, "Mod" %>
+  <%= select_tag :mod_id, options_from_collection_for_select(@mods, "id", "inning") %><br><br>
+  <%#= select_tag :mod_id, options_for_select(:mod_id, Mod.all, :id, :inning) %>
+  <%#= collection_select (:mod_id, Mod.all, :id, :inning) %>
 
-      <%= label_tag :start_date %>
-      <%= date_field_tag :start_date %><br><br>
+  <%= label_tag :number_of_weeks %>
+  <%= select_tag :number_of_weeks, options_for_select(1..6) %><br><br>
 
-    <%= submit_tag "Create Weeks", class: 'btn btn-custom'%>
+  <%= label_tag :start_date %>
+  <%= date_field_tag :start_date %><br><br>
+
+  <%= submit_tag "Create Weeks", class: 'btn btn-custom'%>
 <% end %>

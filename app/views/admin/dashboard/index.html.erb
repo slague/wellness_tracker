@@ -21,27 +21,42 @@
 
   <div class="tab-content">
     <div id="current" class="tab-pane fade in active">
-        <h1>This is <%=current_week.week_number.name%></h1><h4><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h4>
-        <h5>MODS WEEKS GO HERE</h5>
+        <h1>This is <%=current_week.week_number.name%> of <%= @current_mod.inning %></h1>
+        <h3><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h3><hr>
+        <% @mod_weeks.each do |week| %>
+        <div><h5><%= week.week_number.name %>: <%= week.format_start_date %>-<%= week.format_end_date %></h5></div>
+        <% end %>
       <hr>
     </div>
     <div id="set-weeks" class="tab-pane fade">
       <%= render partial: "set_weeks" %>
     </div>
     <div id="week-winners" class="tab-pane fade">
-      <h3>Weekly Winners</h3>
-      Click to select a random winner for the _____ week
-      current week's 100% goal achievers =
-      <% User.achievers(current_week).each do |achiever| %>
-      <%= achiever.name %>
+      <h1>Weekly Winners</h1><hr>
+      <h3>Random weekly winner:</h3>
+      <%= render partial: "weekly_winner" %>
+      <hr>
+      <h3>Achieved 100% of goals this week:</h3>
+      <% @current_week_achievers.each do |achiever| %>
+      <div><h4><%= achiever.name %>, <%= achiever.cohort %></h4></div>
+      <% end %>
+      <hr>
+      <h3>This Mod's Weekly Winners:</h3>
+      <% @mod_weeks.each do |week| %>
+          <% if week.winner  %>
+            <div><h4><%= week.week_number.name %>: <%= week.winner.user.name %>, <%= week.winner.user.cohort %></h4></div>
+          <% else %>
+          <div><h4><%= week.week_number.name %>: No winner selected yet</h4></div>
+          <% end %>
       <% end %>
     </div>
     <div id="mod-winners" class="tab-pane fade">
-      <h3>Mod Winners</h3>
+      <h1>Mod Winners</h1>
       <p>The following students have achieved all of thier goals this mod.</p>
+
     </div>
     <div id="cohorts" class="tab-pane fade">
-      <h3>Cohorts</h3>
+      <h1>Cohorts</h1>
     </div>
   </div>
 </div>

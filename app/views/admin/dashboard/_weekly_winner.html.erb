@@ -1,1 +1,7 @@
-WEEKLY WINNER
+<%= form_tag admin_weeks_path  do %>
+
+    <%= label_tag :week %>
+    <%= select_tag :week, options_for_select(@current_mod.weeks)%><br><br>
+
+    <%= submit_tag "Select a winner!", class: 'btn btn-custom'%>
+<% end %>
