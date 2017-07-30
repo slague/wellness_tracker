@@ -5,7 +5,7 @@ class Admin::WeeksController < ApplicationController
   end
 
   def new
-
+    @mods = Mod.all
   end
 
   def create
