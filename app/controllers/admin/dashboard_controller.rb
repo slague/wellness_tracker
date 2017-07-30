@@ -11,7 +11,6 @@ class Admin::DashboardController < Admin::BaseController
 
     # we will need a way to randomly select the week's winner, and then store that
 
-
     #We'll need a way to see who has achieved 100% of goals each week of the current mod
     # something like......
     # current_mod.weeks.each do |week|

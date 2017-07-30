@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #   resources :census_users, only: [:index]
      resources :weeks, only: [:index, :new, :create, :edit, :update]
      resources :dashboard, only: [:index]
+     resources :winners, only: [:index, :new, :create]
    end
 
   namespace :user do
