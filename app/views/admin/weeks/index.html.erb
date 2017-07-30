@@ -1,3 +1,10 @@
+<div class='back'>
+  <%= link_to '<<Back', user_goals_path %>
+  <%= link_to "Admin Dashboard", admin_dashboard_index_path  %>
+</div>
+
+<h1>Weeks Index</h1>
+
 <% @weeks.each do |week| %>
   <p>Week <%= week.week_number_id %>: <%= week.start_date %> - <%= week.end_date %></p>
 <% end %>

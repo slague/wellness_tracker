@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723180525) do
+ActiveRecord::Schema.define(version: 20170729210737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 20170723180525) do
     t.index ["week_id"], name: "index_goals_on_week_id", using: :btree
   end
 
+  create_table "mods", force: :cascade do |t|
+    t.string "inning"
+  end
+
   create_table "reminders", force: :cascade do |t|
     t.string   "phone_number"
     t.datetime "time"
@@ -83,11 +87,23 @@ ActiveRecord::Schema.define(version: 20170723180525) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "week_number_id"
+    t.integer  "mod_id"
+    t.index ["mod_id"], name: "index_weeks_on_mod_id", using: :btree
     t.index ["week_number_id"], name: "index_weeks_on_week_number_id", using: :btree
+  end
+
+  create_table "winners", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "week_id"
+    t.index ["user_id"], name: "index_winners_on_user_id", using: :btree
+    t.index ["week_id"], name: "index_winners_on_week_id", using: :btree
   end
 
   add_foreign_key "goals", "categories"
   add_foreign_key "goals", "users"
   add_foreign_key "goals", "weeks"
+  add_foreign_key "weeks", "mods"
   add_foreign_key "weeks", "week_numbers"
+  add_foreign_key "winners", "users"
+  add_foreign_key "winners", "weeks"
 end
