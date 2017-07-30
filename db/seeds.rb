@@ -1,5 +1,4 @@
 
-
 # User.create
 WeekNumber.create(name: "Week 1")
 WeekNumber.create(name: "Week 2")

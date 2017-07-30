@@ -10,7 +10,7 @@
   <hr>
 
 <div class="container">
-  <h2>Welcome, <%= current_user.name %></h2><br>
+  <h2>Welcome, <%= current_user.name %></h2><br><br>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#current"><%= image_tag("http://i.imgur.com/UB6HRei.png", size:"50x50") %>&nbsp;Current Mod</a></li>
     <li><a data-toggle="tab" href="#set-weeks"><%= image_tag("http://i.imgur.com/Ako3axd.png", size:"50x50") %>&nbsp;Set Weeks</a></li>
@@ -52,7 +52,8 @@
     </div>
     <div id="mod-winners" class="tab-pane fade">
       <h1>Mod Winners</h1>
-      <p>The following students have achieved all of thier goals this mod.</p>
+      <hr>
+      <%= render partial: "mod_winner" %>
 
     </div>
     <div id="cohorts" class="tab-pane fade">
@@ -60,24 +61,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-<%# @weeks.each do |week| %>
- <h6><%#= week.format_start_date %>-<%#= week.format_end_date %></h6>
-
-<!-- NEEDS REFACTORING -->
-    <%#User.achievers(week.id).each do |user|%>
-    <%#= user.name %>
-    <%#end %>
- <%#end%>
-
-
-<!-- LINK TO SEE THIS MOD'S USERS W/ 100% goal achievement <br> -->

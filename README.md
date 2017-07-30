@@ -18,16 +18,15 @@ This app is designed for Turing Students to track their wellness goals.  It repl
  `rake db:seed`
 
 
- In order to authenticate, you will need to set up GitHub OAuth and add the appropriate environment variables to the .env files.
+ * In order to authenticate, you will need to set up GitHub OAuth and add the appropriate environment variables to the .env files.
 
- In order to implement text messaging, you will need to setup a Twilio Account and add the appropriate environment variables to the .env files. Note that in order to send sms messages from your local machine, you will need to use your actual Twilio phone number. The test number will not send texts.
+ * In order to implement text messaging, you will need to setup a Twilio Account and add the appropriate environment variables to the .env files. Note that in order to send sms messages from your local machine, you will need to use your actual Twilio phone number. The test number will not send texts.
 
- To run locally run `rails s` and open browser to http://127.0.0.1:3000/ (not localhost!)
+ * To run locally run `rails s` and open browser to http://127.0.0.1:3000/ (not localhost!)
 
- The seeds will create all four goal categories, six "week numbers", and one dummy mod with one "week". You will need to either add mods and weeks manually or in the browser in order to create a more realistic 6-week Mod.  
+ * The seeds will create all four goal categories, six "week numbers", and one dummy mod with one "week". You will need to either add mods and weeks manually or in the browser in order to create a more realistic 6-week Mod.  
 
- * Services
- The staging and production applications use Heroku scheduler to send weekly reminder texts.
+ * The staging and production applications use Heroku scheduler to send weekly reminder texts.
  Add the rake task `rake send_weekly_reminders` to Heroku scheduler to recreate.
  Delayed_job is also included in this application, but is not currently being used to send delayed texts.
 

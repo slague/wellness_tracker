@@ -9,6 +9,7 @@
   </div>
 <hr>
 
+<% if current_week %>
 <section class="user-goals">
   <article class="week-date-display">
     <h2><%= current_week.week_number.name %></h2>
@@ -23,7 +24,6 @@
           <img class='icons' src= "<%= goal.category.image_path%>"> &nbsp;
           <h3><%= goal.description %></h3>
         </div>
-        <div class="see-more"></div>
           <%= link_to 'Edit', edit_user_goal_path(goal) %>
           <%= link_to 'Delete', user_goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
@@ -52,7 +52,13 @@
     <hr>
     <% end %>
   </section>
-
   <br>
-
   <%= link_to 'New Goal', new_user_goal_path, class: 'btn btn-danger' %>
+
+<% else %>
+  <section class="user-goals">
+    <article class="week-date-display">
+      <h2>Enjoy Intermission Week!</h2>
+    </article>
+  </section>
+<% end %>
