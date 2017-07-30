@@ -1,6 +1,6 @@
 class Admin::WeeksController < ApplicationController
   def index
-    @weeks = Week.all
+    # @weeks = Week.all
     @mods = Mod.all
   end
 
@@ -9,6 +9,7 @@ class Admin::WeeksController < ApplicationController
   end
 
   def create
+    @mods = Mod.all
     Week.set_weeks((params["number_of_weeks"].to_i), (params["start_date"].to_date), (params["mod_id"].to_i))
 
       redirect_to admin_weeks_path
