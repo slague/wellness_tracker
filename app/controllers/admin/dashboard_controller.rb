@@ -17,8 +17,6 @@ class Admin::DashboardController < Admin::BaseController
     # current_mod.weeks.each do |week|
     # User.achievers(week)
 
-
-
   end
 
 
