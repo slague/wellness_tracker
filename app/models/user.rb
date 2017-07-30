@@ -42,11 +42,7 @@ class User < ApplicationRecord
   end
 
   def self.select_weekly_winner(week_id)
-    winner = User.achievers(week_id).shuffle.pop
-    Winner.create(name: winner.name, week_id: week_id, cohort: winner.cohort)
-    # don't want this to change every time it is run... run once and save the user as that week's winner
-
-    # week = current_week
-    # winner.id == week.winner_id
+    random_winner = User.achievers(week_id).shuffle.pop
+    Winner.create(user_id: random_winner.id, week_id: week_id)
   end
 end
