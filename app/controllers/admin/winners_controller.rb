@@ -24,8 +24,6 @@ class Admin::WeeksController < ApplicationController
   private
 
   def winner_params
-    params.require(:winner).permit(:user_id, :week_id)
+    params.permit(:user_id, :week_id)
   end
-
-
 end

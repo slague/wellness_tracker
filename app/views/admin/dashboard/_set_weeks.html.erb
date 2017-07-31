@@ -1,6 +1,6 @@
 <h1>Set weeks</h1><hr>
 
-<%= form_tag admin_weeks_path  do %>
+<%= form_tag weeks_path  do %>
 
   <%= label_tag :mod_id, "Mod" %>
   <%= select_tag :mod_id, options_from_collection_for_select(@mods, "id", "inning") %><br><br>
