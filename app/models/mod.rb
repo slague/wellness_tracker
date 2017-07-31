@@ -11,6 +11,24 @@ class Mod < ApplicationRecord
     no_winners
   end
 
+  def has_six_weeks?
+    weeks.count == 6
+  end
+
+  def fewer_than_six_weeks?
+    weeks.count < 6
+  end
+
+
+  def self.incomplete_mods
+    incomplete = []
+    all.each do |mod|
+      if mod.fewer_than_six_weeks?
+        incomplete << mod
+      end
+    end
+    incomplete
+  end
 
 
 
