@@ -24,7 +24,7 @@
     <div id="current" class="tab-pane fade in active">
         <h1>This is <%=current_week.week_number.name%> of <%= @current_mod.inning %></h1>
         <h3><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h3><hr>
-        <% @mod_weeks.each do |week| %>
+        <% @current_mod.weeks.each do |week| %>
         <div><h5><%= week.week_number.name %>: <%= week.format_start_date %>-<%= week.format_end_date %></h5></div>
         <% end %>
       <hr>
@@ -43,7 +43,7 @@
       <% end %>
       <hr>
       <h3>This Mod's Weekly Winners:</h3>
-      <% @mod_weeks.each do |week| %>
+      <% @current_mod.weeks.each do |week| %>
           <% if week.winner.is_a? Winner  %>
             <div><h4><%= week.week_number.name %>: <%= week.winner.user.name %>, <%= week.winner.user.cohort %></h4></div>
           <% else %>

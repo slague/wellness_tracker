@@ -38,6 +38,10 @@ class Week < ApplicationRecord
 
   def format_end_date
     self.end_date.strftime("%e %Y")
-
   end
+
+  def ended?
+    self.end_date.past?
+  end
+
 end
