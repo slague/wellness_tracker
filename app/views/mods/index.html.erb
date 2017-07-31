@@ -1,0 +1,9 @@
+<h1>Past Mod Winners</h1>
+<hr>
+
+<% @mods.each do |mod| %>
+  <h4><b>Mod <%= mod.inning %></b></h4>
+  <% mod.mod_winners.each do |winner| %>
+    <p><%= winner %></p>
+    <% end %><hr>
+  <% end %>

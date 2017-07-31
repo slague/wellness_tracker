@@ -45,23 +45,4 @@ class User < ApplicationRecord
     User.achievers(week_id).shuffle.pop
   end
 
-  def self.mod_winners(mod_id)
-    # mod winners are students who achieve 100% of goals every week
-    # make an array achievers for each week
-      # array_week_1 = [student, student2, student5]
-      # array_week_2 = [student, student2, student5, student7]
-      # array_week_3 = [student, student2, student4]
-      # array_week_4 = [student, student2, student6]
-      # array_week_5 = [student, student2, student5]
-      # array_week_6 = [student, student2, student5, student6, student7]
-
-      # take the names that appear in each array: student and student2 are mod winners
-
-    current_mod = Mod.find(mod_id)
-    current_mod.weeks.each do |week|
-      # make an array = User.achievers(week.id)
-    end
-# filter out
-  end
-
 end

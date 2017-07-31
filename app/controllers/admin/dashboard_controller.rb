@@ -7,5 +7,4 @@ class Admin::DashboardController < Admin::BaseController
     @current_week_achievers = User.achievers(current_week)
   end
 
-
 end

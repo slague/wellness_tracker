@@ -1,5 +1,7 @@
 class Mod < ApplicationRecord
   has_many :weeks
+  has_many :users, through: :weeks
+  has_many :goals, through: :weeks
 
   def weeks_without_winners
     no_winners =[]
@@ -31,19 +33,44 @@ class Mod < ApplicationRecord
   end
 
 
+  def mod_winners
+    ended_weeks = []
+    weeks.each do |week|
+      if week.ended?
+        ended_weeks << week
+      end
+    end
 
-      # MOD WINNERS
-      # We'll need a way to see who has achieved 100% of goals each week of the current mod
-      # something like......
-      # current_mod.weeks.each do |week|
-      # User.achievers(week)
-      # all users who achieve 100% of goals every week of hte mod win an end of mod prize!
+    weeks_past = ended_weeks.count
 
-      # so we’d want to select all students from a specific mod filtered by them achieving their goals for each individual week
-      #
-      # ok! i can see something on “mod” that looks through each of it’s students and determines if they’ve achieved all their goals for each week in the mod
-      #
-      # you would need the week id’s though
+    all_weekly_achievers = []
+    ended_weeks.each do |week|
+      all_weekly_achievers << User.achievers(week.id)
+    end
+
+    remove_empty =[]
+    all_weekly_achievers.each do |arr|
+      if arr.any?
+        remove_empty << arr
+      end
+    end
+
+    array_of_achievers = remove_empty.flatten
+    counts = Hash.new(0)
+    array_of_achievers.each do |user|
+      counts["#{user.name}, #{user.cohort}"] += 1
+    end
+
+    mod_winners = []
+    counts.keys.each do |user|
+      if counts[user]== weeks_past
+        mod_winners << user
+      end
+    end
+
+    mod_winners
+  end
+
 
 
 end
