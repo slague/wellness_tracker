@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Admin can create weeks" do
   context "when providing all information" do
-    xscenario "they successfully create 6 weeks" do
+    scenario "they successfully create 6 weeks connected to a mod" do
+      mod = Mod.create(inning: "1701")
       week = WeekNumber.create(name: "one")
       week = WeekNumber.create(name: "two")
       week = WeekNumber.create(name: "three")
@@ -10,7 +11,9 @@ RSpec.feature "Admin can create weeks" do
       week = WeekNumber.create(name: "five")
       week = WeekNumber.create(name: "six")
 
-      visit new_admin_week_path
+      visit admin_dashboard_index_path
+save_and_open_page
+      click_on "Set Weeks"
 
       within(".week_0") do
         fill_in "weeks[][start_date]", with: "2/4/2017"
