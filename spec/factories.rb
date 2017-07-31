@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :reminder do
-
   end
 
 factory :user do

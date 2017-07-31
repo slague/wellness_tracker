@@ -42,8 +42,7 @@ class User < ApplicationRecord
   end
 
   def self.select_weekly_winner(week_id)
-    random_winner = User.achievers(week_id).shuffle.pop
-    Winner.create(user_id: random_winner.id, week_id: week_id)
+    User.achievers(week_id).shuffle.pop
   end
 
   def self.mod_winners(mod_id)

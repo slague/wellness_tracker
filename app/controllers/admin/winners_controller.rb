@@ -1,22 +1,30 @@
-class Admin::WeeksController < ApplicationController
+class Admin::WinnersController < ApplicationController
 
   def index
     @winners = Winner.all
-    # @weeks = Week.all
   end
-
 
   def new
   end
 
+  def show
+    @winner = Winner.find(params[:id])
+  end
+
   def create
-    @winner = Winner.create(winner_params)
+    random_winner = User.select_weekly_winner(params[:week_id])
+    
+    if random_winner == nil
+      flash[:danger] = "No one achieved 100% of goals this week."
+      redirect_to admin_dashboard_index_path
 
-    if @winner.save
-
-      redirect_to admin_dashboard_path
     else
-      render :new
+      @winner = Winner.new(user_id: random_winner.id, week_id: params[:week_id])
+      if @winner.save
+        redirect_to admin_winner_path(@winner)
+      else
+        render :new
+      end
     end
 
   end
