@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   put 'goals/:id/inc', to: 'goals#increment', as: 'inc_goal'
 
   resources :goals, only: [:index]
-  resources :weeks, only: [:index]
+  resources :weeks, only: [:index, :create]
   resources :users, only: [:edit, :update]
 end
