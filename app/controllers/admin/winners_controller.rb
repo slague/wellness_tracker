@@ -2,7 +2,7 @@ class Admin::WeeksController < ApplicationController
 
   def index
     @winners = Winner.all
-    @weeks = Week.all
+    # @weeks = Week.all
   end
 
 

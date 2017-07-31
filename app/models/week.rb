@@ -3,7 +3,7 @@ class Week < ApplicationRecord
   belongs_to :mod
   has_many :goals
   has_many :users, through: :goals
-  has_one :winner
+  # has_one :winner
 
   validates :start_date, :end_date, presence: true
 
