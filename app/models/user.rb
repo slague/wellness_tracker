@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def achieved_all_goals_this_week?(week_id)
-   weekly_progress(week_id) == weekly_total_achieved(week_id)
+    goals.where(week_id: week_id).count > 0 && weekly_progress(week_id) == weekly_total_achieved(week_id)
   end
 
   def self.achievers(week_id)
