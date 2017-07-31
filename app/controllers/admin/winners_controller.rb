@@ -13,7 +13,8 @@ class Admin::WeeksController < ApplicationController
     @winner = Winner.create(winner_params)
 
     if @winner.save
-      redirect_to admin_winners_path
+
+      redirect_to admin_dashboard_path
     else
       render :new
     end

@@ -1,9 +1,9 @@
-<%#= form_tag admin_winners_path  do %>
+<%= form_tag admin_winners_path  do %>
 
-    <%#= label_tag :week_id %>
-    <%#= select_tag :week_id, options_from_collection_for_select(@mod_weeks, "id", "start_date")%><br><br>
+    <%= label_tag :week_id %>
+    <%= select_tag :week_id, options_from_collection_for_select(@mod_weeks, "id", "start_date")%><br><br>
 
     <!-- User.select_weekly_winner == user_id -->
 
-    <!-- <%#= submit_tag "Select a winner!", class: 'btn btn-custom'%> -->
-<!-- <%# end %> -->
+    <%= submit_tag "Select a winner!", class: 'btn btn-custom'%>
+<% end %>
