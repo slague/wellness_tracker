@@ -1,8 +1,5 @@
 class Admin::WeeksController < ApplicationController
-  def index
-    @weeks = Week.all
-    @mods = Mod.all
-  end
+
 
   def new
     @mods = Mod.all

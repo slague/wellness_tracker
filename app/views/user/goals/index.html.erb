@@ -2,6 +2,8 @@
   <div>
     <%= link_to "Past goals" %> &nbsp;
     <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
+    <%= link_to "Calendar", weeks_path %>
+
     <span>
       <%= image_tag('schedule-reminder.svg', size: '18x18') %>
       <%= link_to "Sign up for text reminders", edit_user_path(current_user) %>&nbsp;&nbsp;
