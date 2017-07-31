@@ -3,7 +3,7 @@
 <%= form_tag weeks_path  do %>
 
   <%= label_tag :mod_id, "Mod" %>
-  <%= select_tag :mod_id, options_from_collection_for_select(@mods, "id", "inning") %><br><br>
+  <%= select_tag :mod_id, options_from_collection_for_select(@incomplete_mods, "id", "inning") %><br><br>
 
   <%= label_tag :number_of_weeks %>
   <%= select_tag :number_of_weeks, options_for_select(1..6) %><br><br>
