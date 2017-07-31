@@ -1,6 +1,5 @@
-<h3>The students below have achieved all of thier goals every week this Mod so far:</h3>
+<b><%= link_to "Past Mod Winners", mods_path %></b><br>
+<h3>The students below have achieved all goals every week this Mod so far:</h3>
   <% @current_mod.mod_winners.each do |winner| %>
   <%= winner %><br>
   <% end %>
-
-<%= link_to "Past Mod Winners", mod_index_path %>
