@@ -9,7 +9,7 @@ class Admin::WeeksController < ApplicationController
     @mods = Mod.all
     Week.set_weeks((params["number_of_weeks"].to_i), (params["start_date"].to_date), (params["mod_id"].to_i))
 
-      redirect_to admin_weeks_path
+      redirect_to weeks_path
   end
 
   private
