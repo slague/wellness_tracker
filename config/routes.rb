@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
   #   resources :census_users, only: [:index]
-     resources :weeks, only: [:index, :new, :create, :edit, :update]
+     resources :weeks, only: [:new, :create, :edit, :update]
      resources :dashboard, only: [:index]
      resources :winners, only: [:index, :new, :create]
    end
@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   put 'goals/:id/inc', to: 'goals#increment', as: 'inc_goal'
 
   resources :goals, only: [:index]
+  resources :weeks, only: [:index]
   resources :users, only: [:edit, :update]
 end
