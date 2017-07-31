@@ -13,15 +13,18 @@ class Admin::WinnersController < ApplicationController
 
   def create
     random_winner = User.select_weekly_winner(params[:week_id])
-    
+
     if random_winner == nil
       flash[:danger] = "No one achieved 100% of goals this week."
       redirect_to admin_dashboard_index_path
 
     else
       @winner = Winner.new(user_id: random_winner.id, week_id: params[:week_id])
+
       if @winner.save
-        redirect_to admin_winner_path(@winner)
+        flash[:success] = "#{@winner.user.name}, #{@winner.user.cohort} is the winner this week!"
+
+        redirect_to admin_dashboard_index_path
       else
         render :new
       end
