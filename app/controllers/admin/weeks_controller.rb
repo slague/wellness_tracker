@@ -13,7 +13,6 @@ class Admin::WeeksController < ApplicationController
     Week.set_weeks((params["number_of_weeks"].to_i), (params["start_date"].to_date), (params["mod_id"].to_i))
 
       redirect_to admin_weeks_path
-
   end
 
   private

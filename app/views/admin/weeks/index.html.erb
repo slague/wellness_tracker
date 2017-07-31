@@ -7,13 +7,8 @@
 
 <% @mods.each do |mod| %>
   <h4><b>Mod <%= mod.inning %></b></h4>
-  <% if mod.weeks %>
     <% mod.weeks.each do |week|%>
       <p> <%= week.format_start_date %> - <%= week.format_end_date %></p>
       <% end %>
-    <hr>
-    <% else %>
-    <p>No weeks set</p>
-    <% end %>
     <hr>
 <% end %>
