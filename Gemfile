@@ -33,6 +33,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers' # validations
   gem 'dotenv-rails' # for github authentication
+  gem 'selenium-webdriver'
 end
 
 group :development do
