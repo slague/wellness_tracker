@@ -1,6 +1,6 @@
 <div class="user-info" align="right">
 
-  <%= form_for @user do |f| %>
+  <%= form_for current_user do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>

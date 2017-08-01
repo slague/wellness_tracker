@@ -1,0 +1,34 @@
+<h1>User Profile</h1>
+<hr>
+
+<h3><%= current_user.name %></h3>
+<h3><%= current_user.cohort %></h3>
+<hr>
+
+<h1>My Past Goals</h1>
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Goal</th>
+      <th>Achievment</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.goals.each do |goal| %>
+      <tr>
+        <td><img class='icons' src= "<%= goal.category.image_path%>"></td>
+        <td><%= goal.description %></td>
+        <% if goal.achieved? %>
+          <td><%= image_tag("http://i.imgur.com/f7s3dQN.png", size:"30x30") %></td>
+          <% else %>
+          <td><%= goal.progress_count %> / <%= goal.total_goal_count %></td>
+          <% end %>
+        <td><%= goal.week.format_start_date%>-<%=goal.week.format_end_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
