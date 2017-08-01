@@ -8,17 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'database_cleaner'
 require 'support/github_login_helper'
-# DatabaseCleaner.strategy = :truncation
 
-
-# RSpec.configure do |c|
-#   c.before(:all) do
-#     DatabaseCleaner.clean
-#   end
-#   c.after(:each) do
-#     DatabaseCleaner.clean
-#   end
-# end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 

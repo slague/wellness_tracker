@@ -2,7 +2,6 @@ require "rails_helper"
 
 describe "User sees all goals" do
   scenario "a user sees all his/her goals for the current_week" do
-    # week = create :week
     category = create :category
     user = create :user
 

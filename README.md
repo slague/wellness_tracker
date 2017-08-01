@@ -2,7 +2,7 @@
 
 * Overview
 
-This app is designed for Turing Students to track their wellness goals.  It replaces a school-wide spreadsheet. Goals can be set each week in four categories: "Nutrition", "Personal", "Sleep", and "Sweat". A student sets his or her own goals on Monday of each week. Students can create goals for each category (as many goals as they like per week per category, with no more than a count of 7-one for each day of the week- for each individual goal).  Goals must be marked completed by the end of the day on Sunday.  Goals do not reset at the start of each new week. A user must enter his or her goals each week.
+This app is designed for Turing Students to track their wellness goals.  It replaces an outdated school-wide spreadsheet. Goals can be set each week in four categories: "Nutrition", "Personal", "Sleep", and "Sweat". A student sets his or her own goals for the week. Students can create goals for each category (as many goals as they like per week per category, with no more than a count of 7-one for each day of the week- for each individual goal).  Goals must be marked completed by the end of the day on Sunday.  Goals do not reset at the start of each new week. A user must enter his or her goals each week.
 
 
 ## Tech stack
@@ -32,9 +32,9 @@ This app is designed for Turing Students to track their wellness goals.  It repl
 
 ### Testing
 
-This app uses Rspec for testing. To run tests `rspec`
+This app uses rspec and selenium-webdriver for testing. To run tests `rspec`
 
-### Production Site
-This application is currently under development. This README will be updated as progress is made and the app is deployed to production.  
+### Production
+
 * [Staging Link](https://well-track-staging.herokuapp.com)
 * [Production Link](https://turing-wellness-tracker.herokuapp.com/)
