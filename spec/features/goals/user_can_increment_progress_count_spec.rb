@@ -21,18 +21,24 @@ RSpec.feature "User can increment progress for a goal" do
     @mod.weeks.create(start_date: "2017-07-31", end_date: "2017-08-06", week_number_id: 6)
 
     @user = create(:user)
-    @user.goals.create(week_id: @this_week.id, category_id: 1, description: "test", total_goal_count: 3)
+    @user.goals.create(week_id: @this_week.id, category_id: 1, description: "test", total_goal_count: 2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(@this_week)
   end
 
-  xscenario "clicks plus sign", js: true do
+  scenario "clicks plus sign", js: true do
 
     visit user_goals_path
 
      find(:css, ".goal-inc").click
 
      expect(@user.goals.first.progress_count).to eq(1)
+
+      find(:css, ".goal-inc").click
+
+      expect(@user.goals.first.progress_count).to eq(2)
+      expect(page).to have_css("img[src*='http://i.imgur.com/f7s3dQN.png']")
+      expect(page).to_not have_css("img[src*='/assets/plus_sign-076737256eb691c7d9cf1cd6f5f58c441048e13e02511b6eedeaff2f264e047e.png']")
   end
 
 end
