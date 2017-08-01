@@ -19,6 +19,6 @@ Rails.application.routes.draw do
 
   resources :goals, only: [:index]
   resources :weeks, only: [:index, :create]
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update, :show]
   resources :mods, only: [:index]
 end

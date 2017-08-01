@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
 
+  def show
+  end
+
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
-    @user.update(user_params)
+    current_user.update(user_params)
 
-    if @user.save
+    if current_user.save
       flash[:success] = 'Account updated.'
       redirect_to user_goals_path
     else
-      flash.now[:danger] = "#{@user.errors.messages.first[0]} #{@user.errors.messages.first[1][0]}"
+      flash.now[:danger] = "#{current_user.errors.messages.first[0]} #{current_user.errors.messages.first[1][0]}"
       render :edit
     end
 

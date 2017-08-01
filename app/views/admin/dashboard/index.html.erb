@@ -1,6 +1,6 @@
 <hr>
   <div>
-    <%= link_to "Past goals" %> &nbsp;
+    <%= link_to "Past goals", user_path(current_user) %> &nbsp;
     <%= link_to "Turing Totals", goals_path %> &nbsp;&nbsp;
     <%= link_to "Calendar", weeks_path %>
   <span>
@@ -17,7 +17,7 @@
     <li><a data-toggle="tab" href="#set-weeks"><%= image_tag("http://i.imgur.com/Ako3axd.png", size:"50x50") %>&nbsp;Set Weeks</a></li>
     <li><a data-toggle="tab" href="#week-winners"><%= image_tag("http://i.imgur.com/97Ommhs.png", size:"50x50") %>&nbsp;Weekly Winners</a></li>
     <li><a data-toggle="tab" href="#mod-winners"><%= image_tag("http://i.imgur.com/Sth6Wis.png", size:"50x50") %>&nbsp;Mod Winners</a></li>
-    <li><a data-toggle="tab" href="#cohorts"><%= image_tag("http://i.imgur.com/3UKZnCg.png", size:"50x50") %>&nbsp;Cohorts</a></li>
+    <!-- <li><a data-toggle="tab" href="#cohorts"><%#= image_tag("http://i.imgur.com/3UKZnCg.png", size:"50x50") %>&nbsp;Cohorts</a></li> -->
   </ul>
 
   <div class="tab-content">
@@ -50,6 +50,7 @@
           <div><h4><%= week.week_number.name %>: No winner selected yet</h4></div>
           <% end %>
       <% end %>
+      <hr>
     </div>
     <div id="mod-winners" class="tab-pane fade">
       <h1>Mod Winners</h1>
@@ -57,8 +58,8 @@
       <%= render partial: "mod_winner" %>
 
     </div>
-    <div id="cohorts" class="tab-pane fade">
+    <!-- <div id="cohorts" class="tab-pane fade">
       <h1>Cohorts</h1>
-    </div>
+    </div> -->
   </div>
 </div>

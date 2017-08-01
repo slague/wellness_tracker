@@ -1,9 +1,5 @@
-
-<div class='back'>
-  <%= link_to '<<Back', user_goals_path(current_user) %>
-</div>
-
 <h3>This Week's Turing Community Totals</h3>
+<h5><%=current_week.format_start_date%>-<%=current_week.format_end_date%></h5>
 <hr>
 
 <%@categories.each do |category| %>
