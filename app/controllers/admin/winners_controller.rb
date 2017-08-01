@@ -29,9 +29,7 @@ class Admin::WinnersController < ApplicationController
         render :new
       end
     end
-
   end
-
 
   private
 

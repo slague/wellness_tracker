@@ -1,6 +1,5 @@
 class Admin::WeeksController < ApplicationController
-
-
+  
   def new
     @mods = Mod.all
   end
