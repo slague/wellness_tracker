@@ -3,6 +3,8 @@ class Mod < ApplicationRecord
   has_many :users, through: :weeks
   has_many :goals, through: :weeks
 
+  validates_presence_of :inning
+
   def weeks_without_winners
     no_winners =[]
     weeks.each do |week|
@@ -34,7 +36,7 @@ class Mod < ApplicationRecord
 
 
   def mod_winners
-  
+
     ended_weeks = []
     weeks.each do |week|
       if week.ended?
