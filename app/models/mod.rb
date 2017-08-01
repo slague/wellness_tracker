@@ -34,6 +34,7 @@ class Mod < ApplicationRecord
 
 
   def mod_winners
+  
     ended_weeks = []
     weeks.each do |week|
       if week.ended?
@@ -67,7 +68,6 @@ class Mod < ApplicationRecord
         mod_winners << user
       end
     end
-
     mod_winners
   end
 

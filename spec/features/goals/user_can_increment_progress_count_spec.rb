@@ -12,8 +12,6 @@ RSpec.feature "User can increment progress for a goal" do
     WeekNumber.create(id: 6, name: "Week 6")
 
     @mod = Mod.create(inning: "1701")
-    # @mod2 = Mod.create(inning: "1703")
-    # @mod3 = Mod.create(inning: "1705")
 
     @this_week = @mod.weeks.create(start_date: "2017-06-26", end_date: "2017-07-02", week_number_id: 1)
     @mod.weeks.create(start_date: "2017-07-03", end_date: "2017-07-09", week_number_id: 2)
