@@ -1,6 +1,6 @@
-<b><%= link_to "Past Mod Winners", mods_path %></b><br>
-<h3>The students below have achieved all goals every week this Mod so far:</h3>
+<h3>Students on track so far this Mod:</h3>
   <% @current_mod.mod_winners.each do |winner| %>
   <%= winner %><br>
-  <% end %>
+  <% end %><br>
+  <b><%= button_to "Past Mod Winners", mods_path, class: "btn btn-custom", method: :get%></b><br>
 <hr>
