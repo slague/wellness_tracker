@@ -11,8 +11,6 @@ RSpec.feature "When a logged in admin visits dashboard" do
     WeekNumber.create(id: 6, name: "Week 6")
 
     @mod = Mod.create(inning: "1701")
-    @mod2 = Mod.create(inning: "1703")
-    @mod3 = Mod.create(inning: "1705")
 
     @this_week = @mod.weeks.create(start_date: "2017-06-26", end_date: "2017-07-02", week_number_id: 1)
     @mod.weeks.create(start_date: "2017-07-03", end_date: "2017-07-09", week_number_id: 2)
@@ -27,31 +25,22 @@ RSpec.feature "When a logged in admin visits dashboard" do
     allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(@this_week)
   end
 
-  scenario "can only set weeks for mods that have fewer than 6 weeks (or no weeks set)" do
+  scenario "a logged in admin has access to the admin dashboard" do
     visit admin_dashboard_index_path
 
-    click_on "Set Weeks"
+    expect(current_path).to eq(admin_dashboard_index_path)
+ end
 
-    expect(page).to have_content("Mod")
-    expect(page).to have_select("mod_id", options: [@mod2.inning, @mod3.inning])
-    expect(page).to_not have_select("mod_id", options: [@mod.inning])
-  end
-
-  scenario "can set weeks for mods that have fewer than 6 weeks (or no weeks set)" do
-    visit admin_dashboard_index_path
-
-    click_on "Set Weeks"
-
-    select('1703', :from => 'Mod')
-    select('6', :from => 'Number of weeks')
-    fill_in 'Start date', with: '2017-03-13'
-    click_on "Create Weeks"
-
-    expect(current_path).to eq(weeks_path)
-    expect(page).to have_content(@mod2.inning)
-    expect(page).to have_content(@mod2.weeks.first.start_date.month)
-    expect(page).to have_content(@mod2.weeks.first.end_date.month)
-    expect(@mod3.weeks.count).to eq(0)
+ scenario "a logged in admin sees admin dashboard links" do
+   visit admin_dashboard_index_path
+   
+    expect(page).to have_content(@mod.inning)
+    expect(page).to have_content(@this_week.start_date)
+    expect(page).to have_content(@this_week.week_number.name)
+    expect(page).to have_content("Current Mod")
+    expect(page).to have_content("Set Weeks")
+    expect(page).to have_content("Weekly Winners")
+    expect(page).to have_content("Mod Winners")
   end
 
 end

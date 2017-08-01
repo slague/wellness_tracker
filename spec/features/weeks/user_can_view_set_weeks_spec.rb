@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "When a logged in admin visits dashboard" do
-
+RSpec.feature "User can view all set weeks" do
   before do
     WeekNumber.create(id: 1, name: "Week 1")
     WeekNumber.create(id: 2, name: "Week 2")
@@ -21,37 +20,24 @@ RSpec.feature "When a logged in admin visits dashboard" do
     @mod.weeks.create(start_date: "2017-07-24", end_date: "2017-07-30", week_number_id: 5)
     @mod.weeks.create(start_date: "2017-07-31", end_date: "2017-08-06", week_number_id: 6)
 
-    @admin = create(:user)
-    @admin.update(role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+    @user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(@this_week)
   end
 
-  scenario "can only set weeks for mods that have fewer than 6 weeks (or no weeks set)" do
-    visit admin_dashboard_index_path
+  scenario "visits calendar link and shows a list of all mods and their set weeks" do
+    visit user_goals_path
 
-    click_on "Set Weeks"
+    expect(page).to have_link("Calendar")
 
-    expect(page).to have_content("Mod")
-    expect(page).to have_select("mod_id", options: [@mod2.inning, @mod3.inning])
-    expect(page).to_not have_select("mod_id", options: [@mod.inning])
-  end
-
-  scenario "can set weeks for mods that have fewer than 6 weeks (or no weeks set)" do
-    visit admin_dashboard_index_path
-
-    click_on "Set Weeks"
-
-    select('1703', :from => 'Mod')
-    select('6', :from => 'Number of weeks')
-    fill_in 'Start date', with: '2017-03-13'
-    click_on "Create Weeks"
+    click_on "Calendar"
 
     expect(current_path).to eq(weeks_path)
+    expect(page).to have_content(@mod.inning)
+    expect(page).to have_content(@mod.weeks.first.start_date.month)
+    expect(page).to have_content(@mod.weeks.last.start_date.month)
     expect(page).to have_content(@mod2.inning)
-    expect(page).to have_content(@mod2.weeks.first.start_date.month)
-    expect(page).to have_content(@mod2.weeks.first.end_date.month)
-    expect(@mod3.weeks.count).to eq(0)
-  end
+    expect(page).to have_content(@mod3.inning)
 
+  end
 end

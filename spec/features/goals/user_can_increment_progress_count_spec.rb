@@ -1,38 +1,44 @@
 require 'rails_helper'
 
 RSpec.feature "User can increment progress for a goal" do
-    before :each do
-      @category = create :category
-      @user = create :user_with_goals
+  before do
+    Category.create(id: 1, name: "Category")
 
-      login(@user)
-      visit user_goals_path
+    WeekNumber.create(id: 1, name: "Week 1")
+    WeekNumber.create(id: 2, name: "Week 2")
+    WeekNumber.create(id: 3, name: "Week 3")
+    WeekNumber.create(id: 4, name: "Week 4")
+    WeekNumber.create(id: 5, name: "Week 5")
+    WeekNumber.create(id: 6, name: "Week 6")
 
-      click_on "New Goal"
+    @mod = Mod.create(inning: "1701")
 
-      fill_in "Description", with: "Run 3 miles"
-      fill_in "Total goal count", with: 3
-      select @category.name, :from=>'goal[category_id]'
+    @this_week = @mod.weeks.create(start_date: "2017-06-26", end_date: "2017-07-02", week_number_id: 1)
+    @mod.weeks.create(start_date: "2017-07-03", end_date: "2017-07-09", week_number_id: 2)
+    @mod.weeks.create(start_date: "2017-07-10", end_date: "2017-07-16", week_number_id: 3)
+    @mod.weeks.create(start_date: "2017-07-17", end_date: "2017-07-23", week_number_id: 4)
+    @mod.weeks.create(start_date: "2017-07-24", end_date: "2017-07-30", week_number_id: 5)
+    @mod.weeks.create(start_date: "2017-07-31", end_date: "2017-08-06", week_number_id: 6)
 
-      click_on "Create Goal"
-    end
-
-
-    xscenario "user can update progress count with button until total is met" do
-      goal = @user.goals.first
-
-# clickon increment_button
-     visit user_inc_user_goal_path(goal)
-
-     expect(page).to have_content("1/3")
-
-     visit user_inc_user_goal_path(goal)
-     expect(page).to have_content("2/3")
-
-     visit user_inc_user_goal_path(goal)
-     expect(page).to have_content("3/3")
-     expect(page).to have_content('Nicely done!')
-     expect(page).to_not have_content(increment_button)
-
-    end
+    @user = create(:user)
+    @user.goals.create(week_id: @this_week.id, category_id: 1, description: "test", total_goal_count: 2)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(@this_week)
   end
+
+  scenario "clicks plus sign", js: true do
+
+    visit user_goals_path
+
+     find(:css, ".goal-inc").click
+
+     expect(@user.goals.first.progress_count).to eq(1)
+
+      find(:css, ".goal-inc").click
+
+      expect(@user.goals.first.progress_count).to eq(2)
+      expect(page).to have_css("img[src*='http://i.imgur.com/f7s3dQN.png']")
+      expect(page).to_not have_css("img[src*='/assets/plus_sign-076737256eb691c7d9cf1cd6f5f58c441048e13e02511b6eedeaff2f264e047e.png']")
+  end
+
+end

@@ -27,7 +27,6 @@ describe "User sees all goals" do
     click_on "Create Goal"
 
     expect(current_path).to eq(user_goals_path)
-    # expect(user.goals.count).to eq(2)
     expect(page).to have_content ("Run 3 miles")
     expect(page).to have_content ("Drink plenty of water")
   end
