@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def show
+    @goals = current_user.goals.where.not(week_id: current_week.id).order(week_id: :desc)
   end
 
   def edit
