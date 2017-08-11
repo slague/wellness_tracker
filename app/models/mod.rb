@@ -5,11 +5,13 @@ class Mod < ApplicationRecord
 
   validates_presence_of :inning
 
-  def weeks_without_winners
+  def self.weeks_without_winners
     no_winners =[]
-    weeks.each do |week|
-      if week.winner == nil && week.ended?
-        no_winners << week
+    all.each do |mod|
+      mod.weeks.each do |week|
+        if week.winner == nil && week.ended?
+          no_winners << week
+        end
       end
     end
     no_winners
@@ -34,6 +36,15 @@ class Mod < ApplicationRecord
     incomplete
   end
 
+  def self.most_recent
+  end_dates = []
+   all.each do |mod|
+     end_dates << mod.weeks.last.end_date
+   end
+   nearest_date = end_dates.min_by {|date| (Date.today - date).abs }
+   nearest_week = Week.where(end_date: nearest_date)
+   nearest_week.first.mod
+  end
 
   def mod_winners
 

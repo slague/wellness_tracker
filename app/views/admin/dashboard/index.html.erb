@@ -22,11 +22,16 @@
 
   <div class="tab-content">
     <div id="current" class="tab-pane fade in active">
+      <% if current_week %>
         <h1>This is <%=current_week.week_number.name%> of <%= @current_mod.inning %></h1>
         <h3><%= current_week.format_start_date %>-<%= current_week.format_end_date %></h3><hr>
         <% @current_mod.weeks.each do |week| %>
         <div><h5><%= week.week_number.name %>: <%= week.format_start_date %>-<%= week.format_end_date %></h5></div>
         <% end %>
+      <% else %>
+        <h1>This is INTERMISSION WEEK! </h1>
+      <% end %>
+
       <hr>
     </div>
     <div id="set-weeks" class="tab-pane fade">
