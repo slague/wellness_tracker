@@ -1,7 +1,7 @@
 <%= form_tag admin_winners_path  do %>
 
     <%= label_tag :week_id %>
-    <%= select_tag :week_id, options_from_collection_for_select(@current_mod.weeks_without_winners, "id", "start_date")%><br><br>
+    <%= select_tag :week_id, options_from_collection_for_select(@mods.weeks_without_winners, "id", "start_date")%><br><br>
 
     <%= submit_tag "Select a winner!", class: 'btn btn-custom'%>
 <% end %>
