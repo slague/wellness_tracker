@@ -37,7 +37,13 @@ class Mod < ApplicationRecord
   end
 
   def self.most_recent
-   ends = Mod.all.map { |mod| mod.weeks.last.end_date }
+  ends = []
+   all.each do |mod|
+     if mod.weeks.empty?
+     else
+       ends << mod.weeks.last.end_date
+     end
+  end
    nearest_date = ends.min_by {|date| (Date.today - date).abs }
    nearest_week = Week.where(end_date: nearest_date)
    nearest_week.first.mod
