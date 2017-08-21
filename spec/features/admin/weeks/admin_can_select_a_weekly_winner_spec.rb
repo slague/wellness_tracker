@@ -69,7 +69,6 @@ RSpec.feature "When a logged in admin visits dashboard" do
     expect(page).to have_button("Select a winner!")
 
     expect(page).to have_content("Week")
-    # save_and_open_page
     expect(page).to have_select("week_id", options: ["2017-07-03", "2017-07-10", "2017-07-17", "2017-07-24", "2017-07-31"])
     expect(page).to_not have_select("week_id", options: ["2017-06-26"])
   end
