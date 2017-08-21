@@ -65,9 +65,9 @@ RSpec.describe Mod, type: :model  do
 
     end
 
-    it "#weeks_without_winners" do
-      expect(@last_mod.weeks_without_winners).to eq([])
-      expect(@mod.weeks_without_winners).to eq([ Week.find(4), Week.find(5), Week.find(6) ])
+    it ".weeks_without_winners" do
+      # expect(@last_mod.weeks_without_winners).to eq([])
+      expect(Mod.weeks_without_winners).to eq([ Week.find(4), Week.find(5), Week.find(6), Week.find(7) ])
     end
 
     it "#has_six_weeks" do
