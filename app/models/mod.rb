@@ -53,26 +53,12 @@ class Mod < ApplicationRecord
     ended_weeks = weeks.select do |week|
       week.ended?
     end
-    # ended_weeks = []
-    # weeks.each do |week|
-    #   if week.ended?
-    #     ended_weeks << week
-    #   end
-    # end
-
     weeks_past = ended_weeks.count
 
     all_weekly_achievers = []
     ended_weeks.each do |week|
       all_weekly_achievers << User.achievers(week.id)
     end
-
-    # remove_empty =[]
-    # all_weekly_achievers.each do |arr|
-    #   if arr.any?
-    #     remove_empty << arr
-    #   end
-    # end
 
     remove_empty = all_weekly_achievers.select do |arr|
       arr.any?
@@ -83,15 +69,6 @@ class Mod < ApplicationRecord
     array_of_achievers.each do |user|
       counts["#{user.name}, #{user.cohort}"] += 1
     end
-
-  #   mod_winners = []
-  #   counts.keys.each do |user|
-  #     if counts[user]== weeks_past
-  #       mod_winners << user
-  #     end
-  #   end
-  #   mod_winners
-  # end
 
     mod_winners = counts.keys.select do |user|
       counts[user] == weeks_past
